@@ -84,7 +84,7 @@ class Login extends Component {
                                     placeholder='Enter your password'
                                     className='form-control' />
                                 <span onClick={() => { this.handleShowHidePassword() }}>
-                                    <i class={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
+                                    <i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
                                 </span>
                             </div>
                         </div>
