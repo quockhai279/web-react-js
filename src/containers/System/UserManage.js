@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 import './UserManage.scss';
 import {
     getAllUsers, createNewUserService,
-    deleteUserService,
+    deleteUserService, editUserService
 } from '../../services/userService'
 import ModalUser from './ModalUser'
+import ModalEditUser from './ModalEditUser'
 import { emitter } from '../../utils/emitter'
+
 
 class UserManage extends Component {
 
@@ -16,6 +18,8 @@ class UserManage extends Component {
         this.state = {
             arrUsers: [],
             isOpenModalUser: false,
+            isOpenModalEditUser: false,
+            userEdit: {},
         }
     }
 
@@ -45,6 +49,12 @@ class UserManage extends Component {
         })
     }
 
+    toggleUserEditModal = () => {
+        this.setState({
+            isOpenModalEditUser: !this.state.isOpenModalEditUser,
+        })
+    }
+
     createNewUser = async (data) => {
         try {
             let response = await createNewUserService(data)
@@ -64,13 +74,35 @@ class UserManage extends Component {
     }
 
     handleDeleteUser = async (user) => {
-        console.log(user)
         try {
             let response = await deleteUserService(user.id)
             if (response && response.errCode === 0) {
                 await this.getALlUsersFromReact()
             } else {
                 alert(response.errMessage)
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    handleEditUser = (user) => {
+        this.setState({
+            isOpenModalEditUser: true,
+            userEdit: user,
+        })
+    }
+
+    doEditUser = async (user) => {
+        try {
+            let res = await editUserService(user)
+            if (res && res.errCode === 0) {
+                this.setState({
+                    isOpenModalEditUser: false
+                })
+                await this.getALlUsersFromReact()
+            } else {
+                alert(res.errCode)
             }
         } catch (e) {
             console.log(e);
@@ -86,6 +118,15 @@ class UserManage extends Component {
                     toggleFromParent={this.toggleUserModal}
                     createNewUser={this.createNewUser}
                 />
+                {
+                    this.state.isOpenModalEditUser &&
+                    <ModalEditUser
+                        isOpen={this.state.isOpenModalEditUser}
+                        toggleFromParent={this.toggleUserEditModal}
+                        currentUser={this.state.userEdit}
+                        editUser={this.doEditUser}
+                    />
+                }
                 <div className="title text-center">Manage users</div>
                 <div className='mx-2'>
                     <button
@@ -113,7 +154,7 @@ class UserManage extends Component {
                                         <td>
                                             <button
                                                 className='btn-edit'
-                                                onClick={() => this.handleEditUser()}
+                                                onClick={() => this.handleEditUser(item)}
                                             ><i className='fas fa-pencil-alt'></i></button>
                                             <button
                                                 className='btn-delete'
@@ -130,7 +171,6 @@ class UserManage extends Component {
             </div>
         );
     }
-
 }
 
 const mapStateToProps = state => {
