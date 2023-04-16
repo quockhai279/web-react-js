@@ -42,7 +42,7 @@ class HomeHeader extends Component {
                             <div className='child-content'><b><FormattedMessage id={'homeheader.sale'} /></b></div>
                         </div >
                         <div className='right-content'>
-                            <i className='fas fa-box'></i>
+                            <i className="fa fa-box"></i>
                         </div>
                     </nav >
                 </div >
@@ -53,38 +53,6 @@ class HomeHeader extends Component {
                     </div>
 
                 </div>
-                {/* <div className='home-header-down'>
-                    <div className='options'>
-                        <div className='option-child'>
-                            <div className='icon-child'></div>
-                            <div className='text-child'></div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'></div>
-                            <div className='text-child'></div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'></div>
-                            <div className='text-child'></div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'></div>
-                            <div className='text-child'></div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'></div>
-                            <div className='text-child'></div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'></div>
-                            <div className='text-child'></div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'></div>
-                            <div className='text-child'></div>
-                        </div>
-                    </div>
-                </div> */}
                 <section className='ps-features'>
                     <div className='list'>
                         <div className='row-content'>
