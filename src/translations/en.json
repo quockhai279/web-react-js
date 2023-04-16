@@ -1,4 +1,20 @@
 {
+    "homeheader": {
+        "intro": "Intro",
+        "help": "Help",
+        "sale": "Sale"
+    },
+    "homebanner": {
+        "genuine-commitment": "GENUINE COMMITMENT",
+        "authentic": "100% Authentic",
+        "authentic-content": "Guaranteed genuine goods from Europe, America...",
+        "fast-delivery": "FAST DELIVERY",
+        "express-delivery": "Express delivery",
+        "express-delivery-content": "Fast delivery within Ho Chi Minh City in just 1 hour",
+        "supporting": "SUPPORTING 24/24",
+        "supporting-24h": "Supporting 24/24",
+        "supporting-content": "Call now for a consultation"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",

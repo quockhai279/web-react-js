@@ -1,4 +1,20 @@
 {
+    "homeheader": {
+        "intro": "Giới Thiệu",
+        "help": "Hỗ trợ",
+        "sale": "Giảm giá"
+    },
+    "homebanner": {
+        "genuine-commitment": "CAM KẾT CHÍNH HÃNG",
+        "authentic": "100% chính hãng",
+        "authentic-content": "Cam kết sản phẩm chính hãng từ Châu Âu, Châu Mỹ...",
+        "fast-delivery": "GIAO HÀNG NHANH CHÓNG",
+        "express-delivery": "Chuyển phát nhanh",
+        "express-delivery-content": "Giao hàng nhanh chóng trong nội thành Hồ Chí Minh chỉ trong 1h ",
+        "supporting": "HỖ TRỢ 24/24",
+        "supporting-24h": "Hỗ trợ 24/24",
+        "supporting-content": "Gọi ngay để được hỗ trợ tư vấn"
+    },
     "common": {
         "add": "Thêm",
         "edit": "Sửa",

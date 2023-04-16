@@ -1,0 +1,166 @@
+.home-header-container {
+    height: 140px;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gainsboro;
+
+    .home-header-content-top {
+        width: 100%;
+        height: 30%;
+        border-bottom: 1px solid gainsboro;
+
+        .right-content-top {
+            width: 15%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .language {
+                display: flex;
+
+                .language-vi {
+                    cursor: pointer;
+                    padding: 0 10px;
+                    opacity: 0.2;
+
+                    &.active {
+                        opacity: 1;
+
+                        span {
+                            color: orange;
+                        }
+                    }
+                }
+
+                .language-en {
+                    cursor: pointer;
+                    opacity: 0.2;
+
+                    &.active {
+                        opacity: 1;
+                        color: orange;
+                    }
+                }
+            }
+        }
+    }
+
+    .home-header-content-bot {
+        width: 100%;
+        height: 70%;
+        display: flex;
+
+        .left-content {
+            width: 20%;
+            display: flex;
+            align-items: center;
+
+            .header-logo {
+                background: url('../../assets/LogoShoes.webp') center center no-repeat;
+                height: 100%;
+                width: 100%;
+                background-size: 90%;
+                cursor: pointer;
+            }
+
+            i {
+                cursor: pointer;
+                font-size: 30px;
+                color: gray;
+                padding: 0 5px;
+            }
+        }
+
+        .center-content {
+            width: 65%;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .child-content {
+                cursor: pointer;
+            }
+        }
+
+        .right-content {
+            width: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            i {
+                cursor: pointer;
+                font-size: 35px;
+            }
+
+        }
+    }
+}
+
+.home-header-banner {
+    background: url('../../assets/imgshoes.png') center center no-repeat;
+    height: 500px;
+    width: 100%;
+    position: relative;
+
+    .search {
+        position: absolute;
+        background: #f7d800;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid red;
+        border-radius: 25px;
+        width: fit-content;
+        padding: 5px;
+        top: 68%;
+        left: 50%;
+        transform: translate(-50%, -70%);
+
+        i {
+            margin: 0 5px;
+        }
+
+        input {
+            height: 30px;
+            width: 500px;
+            outline: none;
+            border: none;
+            background: transparent;
+        }
+    }
+}
+
+.list {
+    padding: 20px;
+    display: grid;
+    column-gap: 1%;
+    grid-template-columns: 32.66% 32.66% 32.66%;
+    row-gap: 10px;
+    border: 1px solid red;
+
+    .row-content i {
+        width: 90%;
+        font-size: 35px;
+        height: 50px;
+        text-align: center;
+    }
+
+    .iconbox-header {
+        text-align: center;
+    }
+
+    .row-content p {
+        text-align: center;
+    }
+}
+
+.home-header-down {
+    height: 50px;
+    width: 100%;
+    border: 1px solid red;
+}
