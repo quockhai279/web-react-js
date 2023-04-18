@@ -42,7 +42,7 @@ class HomeHeader extends Component {
                             <div className='child-content'><b><FormattedMessage id={'homeheader.sale'} /></b></div>
                         </div >
                         <div className='right-content'>
-                            <i className="fa fa-box"></i>
+                            <i class="fa-sharp fa-light fa-cart-shopping"></i>
                         </div>
                     </nav >
                 </div >
