@@ -4,6 +4,7 @@ import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../utils'
 import { changeLanguageApp } from '../../store/actions'
+import imgCart from "../../assets/imgProduct/cart-logo.png"
 
 class HomeHeader extends Component {
     changeLanguage = (language) => {
@@ -42,7 +43,7 @@ class HomeHeader extends Component {
                             <div className='child-content'><b><FormattedMessage id={'homeheader.sale'} /></b></div>
                         </div >
                         <div className='right-content'>
-                            <i class="fa-sharp fa-light fa-cart-shopping"></i>
+                            <img src={imgCart} />
                         </div>
                     </nav >
                 </div >

@@ -18,9 +18,36 @@ class Product extends Component {
                     <div className='product-list'>
                         <div className='list-container'>
                             <div className='item'>
+                                <img src={productImg2} />
+                                <div className='list-detail'>
+                                    <a href='' className='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
+                                    <div className='star'>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                    </div>
+                                    <div className='price'>
+                                        3,300,000 đ
+                                        <del className='old-price'>4.200.000 đ</del>
+                                    </div>
+                                </div>
+                                <div className='product-label-group'>
+                                    <div className='product-label'>
+                                        <span>New</span>
+                                    </div>
+                                    <div className='product-label-sale'>
+                                        <span>-7%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='list-container'>
+                            <div className='item'>
                                 <img src={productImg} />
                                 <div className='list-detail'>
-                                    <a href='' class='title'>AIR FORCE 1</a>
+                                    <a href='' className='title'>AIR FORCE 1</a>
                                     <div className='star'>
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
@@ -28,7 +55,14 @@ class Product extends Component {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
                                     </div>
-                                    <div class='price'>3,300,000</div>
+                                    <div className='price'>
+                                        3.900.000 đ
+                                    </div>
+                                </div>
+                                <div className='product-label-group'>
+                                    <div className='product-label'>
+                                        <span>New</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +70,7 @@ class Product extends Component {
                             <div className='item'>
                                 <img src={productImg2} />
                                 <div className='list-detail'>
-                                    <a href='' class='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
+                                    <a href='' className='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
                                     <div className='star'>
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
@@ -44,7 +78,14 @@ class Product extends Component {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
                                     </div>
-                                    <div class='price'>3,300,000</div>
+                                    <div className='price'>
+                                        3,300,000 đ
+                                    </div>
+                                </div>
+                                <div className='product-label-group'>
+                                    <div className='product-label'>
+                                        <span>New</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +93,7 @@ class Product extends Component {
                             <div className='item'>
                                 <img src={productImg2} />
                                 <div className='list-detail'>
-                                    <a href='' class='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
+                                    <a href='' className='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
                                     <div className='star'>
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
@@ -60,7 +101,12 @@ class Product extends Component {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
                                     </div>
-                                    <div class='price'>3,300,000</div>
+                                    <div className='price'>3,300,000 đ</div>
+                                </div>
+                                <div className='product-label-group'>
+                                    <div className='product-label'>
+                                        <span>New</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +114,7 @@ class Product extends Component {
                             <div className='item'>
                                 <img src={productImg2} />
                                 <div className='list-detail'>
-                                    <a href='' class='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
+                                    <a href='' className='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
                                     <div className='star'>
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
@@ -76,32 +122,20 @@ class Product extends Component {
                                         <i className="fa fa-star"></i>
                                         <i className="fa fa-star"></i>
                                     </div>
-                                    <div class='price'>3,300,000</div>
+                                    <div className='price'>3,300,000 đ</div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className='list-container'>
-                            <div className='item'>
-                                <img src={productImg2} />
-                                <div className='list-detail'>
-                                    <a href='' class='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
-                                    <div className='star'>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
+                                <div className='product-label-group'>
+                                    <div className='product-label'>
+                                        <span>New</span>
                                     </div>
-                                    <div class='price'>3,300,000</div>
                                 </div>
                             </div>
                         </div>
-
 
                     </div>
                     <div className='ps-product-col'></div>
                 </div>
-            </section>
+            </section >
         )
     }
 }
