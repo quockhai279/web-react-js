@@ -1,10 +1,14 @@
 .home-header-container {
+    position: sticky !important;
     height: 140px;
     width: 100%;
     padding: 0 10px;
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid gainsboro;
+    background: white;
+    top: 0;
+    z-index: 10000;
 
     .home-header-content-top {
         width: 100%;

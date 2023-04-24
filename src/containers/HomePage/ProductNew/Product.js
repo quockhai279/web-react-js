@@ -7,7 +7,6 @@ import productImg2 from "../../../assets/imgProduct/nike-air-force-1-shadow-mult
 
 
 class Product extends Component {
-
     render() {
         return (
             <section className='section-product'>

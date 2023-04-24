@@ -1,12 +1,9 @@
-.productHot-container {
+.productSale-container {
     width: 100% !important;
     height: 600px !important;
     padding: 20px 43px;
-    display: flex;
-    flex-direction: column;
 
     .product-header {
-
 
         .section-title {
             position: relative !important;
@@ -113,7 +110,7 @@
                 color: #ffff;
 
                 .product-label {
-                    position: relative !important;
+                    position: relative;
                     background-color: #ed7207;
                     width: 100%;
                     height: auto;
