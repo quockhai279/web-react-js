@@ -54,6 +54,7 @@
         "Gender": "Gender",
         "Position": "Position",
         "Image": "Image",
-        "Save": "Save"
+        "Save": "Save",
+        "upLoadImd": "Upload Img"
     }
 }
