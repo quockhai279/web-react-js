@@ -55,6 +55,7 @@
         "Position": "Position",
         "Image": "Image",
         "Save": "Save",
+        "Edit": "Save changes",
         "upLoadImd": "Upload Img"
     }
 }
