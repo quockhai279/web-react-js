@@ -39,6 +39,7 @@
             "crud-redux": "CRUD redux",
             "product": "Product",
             "manage-product": "Manage product",
+            "manage-product-redux": "Manage product redux",
             "purchase-order": "Purchase order",
             "manage-order": "Order management"
         }

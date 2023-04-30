@@ -26,7 +26,10 @@ export const adminMenu = [
         name: 'menu.admin.product',
         menus: [
             {
-                name: 'menu.admin.manage-product', link: '/system/manage-product'
+                name: 'menu.admin.manage-product', link: '/system/product-manage'
+            },
+            {
+                name: 'menu.admin.manage-product-redux', link: '/system/product-redux'
             },
         ]
     },

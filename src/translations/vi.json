@@ -39,6 +39,7 @@
             "crud-redux": "CRUD redux",
             "product": "Sản phẩm",
             "manage-product": "Quản lý sản phẩm",
+            "manage-product-redux": "Quản lý sản phẩm redux",
             "purchase-order": "Đơn đặt hàng",
             "manage-order": "Quản lý đơn hàng"
         }
