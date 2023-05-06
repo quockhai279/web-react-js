@@ -30,7 +30,6 @@ class TableManageUser extends Component {
 
     handleEditUser = (user) => {
         this.props.handleEditUserFromParentKey(user)
-
     }
 
     render() {
@@ -81,7 +80,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
-        deleteAUserRedux: (id) => dispatch(actions.deleteAUser(id))
+        deleteAUserRedux: (id) => dispatch(actions.deleteAUser(id)),
     };
 };
 

@@ -66,6 +66,7 @@
                             font-weight: 700;
                             text-decoration: none;
                             text-align: left;
+                            text-transform: uppercase;
                             line-height: 1.3em;
                             height: 44px;
                             margin-bottom: 10px;
@@ -106,7 +107,7 @@
                     img {
                         z-index: 1;
                         object-fit: contain;
-                        padding-top: 20px;
+                        margin-top: 15px;
                         width: 90%;
                         height: 100%;
                         box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.1);

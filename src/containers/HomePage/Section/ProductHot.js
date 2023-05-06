@@ -31,8 +31,9 @@ class ProductHot extends Component {
     }
 
     render() {
-        console.log('check props:', this.props.topDoctorsRedux);
-        let { arrDoctors, language } = this.state
+        // console.log('check props doctor redux:', this.props.topDoctorsRedux);
+        let { arrDoctors } = this.state
+        let { language } = this.props
         arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors)
         return (
             <div className='productHot-container'>
@@ -43,26 +44,24 @@ class ProductHot extends Component {
                     <Slider {...this.props.settings}>
                         {arrDoctors && arrDoctors.length > 0
                             && arrDoctors.map((item, index) => {
-                                // if (index == 0) {
-                                //     console.log('check item:', item);
-                                // }
-                                // let nameVi = `${item.positionData.valueVi}, ${item.firstName}, ${item.lastName}`;
-                                // let nameEn = `${item.positionData.valueEn}, ${item.firstName}, ${item.lastName}`;
+                                let imageBase64 = '';
+                                if (item.image) {
+                                    imageBase64 = new Buffer(item.image, 'base64').toString('binary')
+                                }
+                                let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`;
+                                let nameEn = `${item.positionData.valueEn}, ${item.lastName} ${item.firstName}`;
                                 return (
                                     <div className='img-customize' key={index}>
-                                        <img src={productImg2} />
+                                        <div
+                                            className='img'
+                                            style={{ backgroundImage: `url(${imageBase64})` }}
+                                        // src={productImg2}
+                                        ></div>
                                         <div className='list-detail'>
                                             <a href='' className='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
-                                            <div className='star'>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
                                             <div className='price'>
-                                                3,300,000 đ
-                                                <del className='old-price'>4.200.000 đ</del>
+                                                <div>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
+                                                <div>cơ xương khớp</div>
                                             </div>
                                         </div>
                                         <div className='product-label-group'>
