@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import './About.scss';
 import { FormattedMessage } from 'react-intl';
 
-import imgShoes1 from '../../../assets/imgProduct/jordan-1-mid-obsidian.jpeg'
-import imgShoes2 from '../../../assets/imgProduct/nike-air-force-1-shadow-multicolor.jpeg'
-import imgShoes3 from '../../../assets/imgProduct/sneaker-super-star.jpeg'
-import imgShoes4 from '../../../assets/imgProduct/nike-air-force.jpeg'
-import imgShoes5 from '../../../assets/imgProduct/SNEAKER-AIR-FORCE.jpg'
-import imgShoes6 from '../../../assets/imgProduct/jordan-1-mid-obsidian.jpeg'
+// import imgShoes1 from '../../../assets/imgProduct/jordan-1-mid-obsidian.jpeg'
+// import imgShoes2 from '../../../assets/imgProduct/nike-air-force-1-shadow-multicolor.jpeg'
+// import imgShoes3 from '../../../assets/imgProduct/sneaker-super-star.jpeg'
+// import imgShoes4 from '../../../assets/imgProduct/nike-air-force.jpeg'
+// import imgShoes5 from '../../../assets/imgProduct/SNEAKER-AIR-FORCE.jpg'
+// import imgShoes6 from '../../../assets/imgProduct/jordan-1-mid-obsidian.jpeg'
 
 
 class About extends Component {
@@ -29,7 +29,7 @@ class About extends Component {
                         </iframe>
                     </div>
                     <div className='content-right'>
-                        <div className='item-img'>
+                        {/* <div className='item-img'>
                             <img src={imgShoes5} />
                             <img src={imgShoes4} />
                             <img src={imgShoes1} />
@@ -39,7 +39,7 @@ class About extends Component {
                             <img src={imgShoes3} />
                             <img src={imgShoes4} />
                             <img src={imgShoes6} />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div >

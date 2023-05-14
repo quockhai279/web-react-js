@@ -59,40 +59,46 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </section>
-                <section className='header-banner-homepage'>
-                </section>
-                <section className='features'>
-                    <div className='row-content'>
-                        <div className='iconbox-header'>
-                            <i className="fa fa-box"></i>
-                            <h3><FormattedMessage id={'homebanner.genuine-commitment'} /></h3>
-                            <p><FormattedMessage id={'homebanner.authentic'} /></p>
+                {this.props.isShowBanner === true &&
+                    <section>
+                        <div className='header-banner-homepage'>
                         </div>
-                        <div className='iconbox-content'>
-                            <p><FormattedMessage id={'homebanner.authentic-content'} /></p>
+                        <div className='features'>
+                            <div className='row-content'>
+                                <div className='iconbox-header'>
+                                    <i className="fa fa-box"></i>
+                                    <h3><FormattedMessage id={'homebanner.genuine-commitment'} /></h3>
+                                    <p><FormattedMessage id={'homebanner.authentic'} /></p>
+                                </div>
+                                <div className='iconbox-content'>
+                                    <p><FormattedMessage id={'homebanner.authentic-content'} /></p>
+                                </div>
+                            </div>
+                            <div className='row-content'>
+                                <div className='iconbox-header'>
+                                    <i className="fa fa-truck"></i>
+                                    <h3><FormattedMessage id={'homebanner.fast-delivery'} /></h3>
+                                    <p><FormattedMessage id={'homebanner.express-delivery'} /></p>
+                                </div>
+                                <div className='iconbox-content'>
+                                    <p><FormattedMessage id={'homebanner.express-delivery-content'} /></p>
+                                </div>
+                            </div>
+                            <div className='row-content'>
+                                <div className='iconbox-header'>
+                                    <i className="fa fa-phone"></i>
+                                    <h3><FormattedMessage id={'homebanner.supporting'} /></h3>
+                                    <p><FormattedMessage id={'homebanner.supporting-24h'} /></p>
+                                </div>
+                                <div className='iconbox-content'>
+                                    <p><FormattedMessage id={'homebanner.supporting-content'} /></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className='row-content'>
-                        <div className='iconbox-header'>
-                            <i className="fa fa-truck"></i>
-                            <h3><FormattedMessage id={'homebanner.fast-delivery'} /></h3>
-                            <p><FormattedMessage id={'homebanner.express-delivery'} /></p>
-                        </div>
-                        <div className='iconbox-content'>
-                            <p><FormattedMessage id={'homebanner.express-delivery-content'} /></p>
-                        </div>
-                    </div>
-                    <div className='row-content'>
-                        <div className='iconbox-header'>
-                            <i className="fa fa-phone"></i>
-                            <h3><FormattedMessage id={'homebanner.supporting'} /></h3>
-                            <p><FormattedMessage id={'homebanner.supporting-24h'} /></p>
-                        </div>
-                        <div className='iconbox-content'>
-                            <p><FormattedMessage id={'homebanner.supporting-content'} /></p>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                }
+
+
             </React.Fragment >
         );
     }

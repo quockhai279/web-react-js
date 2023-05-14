@@ -54,7 +54,7 @@ class HomePage extends Component {
 
         return (
             <div>
-                <HomeHeader />
+                <HomeHeader isShowBanner={true} />
                 <Product />
                 <ProductHot
                     settings={settings}

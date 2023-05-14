@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Product.scss';
 import { FormattedMessage } from 'react-intl';
-import productImg from "../../../assets/imgProduct/SNEAKER-AIR-FORCE.jpg"
-import productImg2 from "../../../assets/imgProduct/nike-air-force-1-shadow-multicolor.jpeg"
+import productImg2 from "../../../assets/imgProduct/product/nike-air-force-1-shadow-multicolor.jpeg"
 import * as actions from '../../../store/actions'
+import { withRouter } from 'react-router'
 
 class Product extends Component {
 
@@ -27,6 +27,10 @@ class Product extends Component {
         this.props.listProductHomeRedux()
     }
 
+    handleViewProductDetail = (product) => {
+        this.props.history.push(`/products/${product.id}`)
+    }
+
     render() {
         let { arrProduct } = this.state
         return (
@@ -43,7 +47,7 @@ class Product extends Component {
                                     imageBase64 = new Buffer(item.image, 'base64').toString('binary')
                                 }
                                 return (
-                                    <div className='item-container' key={index}>
+                                    <div className='item-container' key={index} onClick={() => this.handleViewProductDetail(item)}>
                                         <div className='img-productNew' style={{ backgroundImage: `url(${imageBase64})` }}></div>
                                         <div className='list-detail'>
                                             <a href='' className='title'>{`${item.name}`}</a>
@@ -92,4 +96,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Product));

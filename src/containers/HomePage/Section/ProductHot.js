@@ -4,9 +4,8 @@ import './ProductHot.scss';
 import { FormattedMessage } from 'react-intl';
 import * as actions from '../../../store/actions'
 import { LANGUAGES } from '../../../utils';
-
 import Slider from "react-slick";
-import productImg2 from "../../../assets/imgProduct/nike-air-force-1-shadow-multicolor.jpeg"
+import { withRouter } from 'react-router'
 
 
 class ProductHot extends Component {
@@ -32,7 +31,9 @@ class ProductHot extends Component {
 
     handleViewDetailDoctor = (doctor) => {
         console.log('view info doctor:', doctor);
+        this.props.history.push(`/users/${doctor.id}`)
     }
+
     render() {
         let { arrDoctors } = this.state
         let { language } = this.props
@@ -98,4 +99,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductHot);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductHot));

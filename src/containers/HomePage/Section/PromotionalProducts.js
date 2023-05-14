@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './PromotionalProducts.scss'
 
 import Slider from "react-slick";
-import productImg2 from "../../../assets/imgProduct/nike-air-force-1-shadow-multicolor.jpeg"
+import productImg2 from "../../../assets/imgProduct/product/nike-air-force-1-shadow-multicolor.jpeg"
 
 
 class PromotionalProducts extends Component {

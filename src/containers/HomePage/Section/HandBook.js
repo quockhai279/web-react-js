@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HandBook.scss';
 import { FormattedMessage } from 'react-intl';
-import imgVSG from '../../../assets/imgProduct/ImgShoesVs.jpg'
+import imgVSG from '../../../assets/imgProduct/news/ImgShoesVs.jpg'
 
 
 class HandBook extends Component {
