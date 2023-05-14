@@ -116,12 +116,10 @@ export const editProductsFailed = () => ({
     type: actionTypes.EDIT_PRODUCT_FAILED,
 })
 
-
 export const fetchProductListHome = () => {
     return async (dispatch, getState) => {
         try {
-            let res = await getAllProductsListHome('10')
-            console.log('check res get All Products List Home', res);
+            let res = await getAllProductsListHome('40')
             if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALL_LIST_PRODUCT_SUCCESS,

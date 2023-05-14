@@ -40,8 +40,8 @@ class ProductRedux extends Component {
                 quantity: '',
                 description: '',
                 image: '',
-
-                action: CRUD_ACTIONS.CREATE
+                previewImgURL: '',
+                action: CRUD_ACTIONS.CREATE,
             })
         }
     }
@@ -143,7 +143,7 @@ class ProductRedux extends Component {
                         <div className='row'>
                             <div className='col-12 my-3'>Thêm mới sản phẩm</div>
                             {/* <div className='col-12'>{isLoadingGenderReact === true ? 'Loading genders' : ''}</div> */}
-                            <div className='col-3'>
+                            <div className='col-6'>
                                 <label>Tên sản phảm</label>
                                 <input className='form-control' type='text'
                                     value={name}
@@ -164,11 +164,18 @@ class ProductRedux extends Component {
                                     onChange={(event) => { this.onChangeInput(event, 'quantity') }}
                                 />
                             </div>
-                            <div className='col-3'>
-                                <label>Mô tả</label>
+                            <div className='col-6'>
+                                <label>Thương hiệu</label>
                                 <input className='form-control' type='text'
                                     value={description}
                                     onChange={(event) => { this.onChangeInput(event, 'description') }}
+                                />
+                            </div>
+                            <div className='col-3'>
+                                <label>Thể loại</label>
+                                <input className='form-control' type='text'
+                                // value={ }
+                                // onChange={(event) => { this.onChangeInput(event, '') }}
                                 />
                             </div>
                             <div className='col-3'>
@@ -209,7 +216,6 @@ class ProductRedux extends Component {
                     </div>
 
                 </div>
-
                 {
                     this.state.isOpen === true &&
                     <Lightbox

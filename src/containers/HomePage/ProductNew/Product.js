@@ -29,8 +29,6 @@ class Product extends Component {
 
     render() {
         let { arrProduct } = this.state
-        console.log('check props product redux:', this.props.HomeProductList);
-        console.log('check state productList Home :', this.state);
         return (
             <section className='section-product'>
                 <div className='container'>
@@ -44,33 +42,29 @@ class Product extends Component {
                                 if (item.image) {
                                     imageBase64 = new Buffer(item.image, 'base64').toString('binary')
                                 }
-                                console.log('check image :', imageBase64);
-                                console.log('check firstName');
                                 return (
-                                    <div className='list-container' key={index}>
-                                        <div className='item'>
-                                            <img src={productImg2} style={{ backgroundImage: `url(${imageBase64})` }} />
-                                            <div className='list-detail'>
-                                                <a href='' className='title'>{`${item.name}`}</a>
-                                                <div className='star'>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                </div>
-                                                <div className='price'>
-                                                    {`${item.price}`} đ
-                                                    <del className='old-price'>4.200.000 đ</del>
-                                                </div>
+                                    <div className='item-container' key={index}>
+                                        <div className='img-productNew' style={{ backgroundImage: `url(${imageBase64})` }}></div>
+                                        <div className='list-detail'>
+                                            <a href='' className='title'>{`${item.name}`}</a>
+                                            <div className='star'>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
                                             </div>
-                                            <div className='product-label-group'>
-                                                <div className='product-label'>
-                                                    <span>New</span>
-                                                </div>
-                                                <div className='product-label-sale'>
-                                                    <span>-7%</span>
-                                                </div>
+                                            <div className='price'>
+                                                {`${item.price}`} đ
+                                                <del className='old-price'>4.200.000 đ</del>
+                                            </div>
+                                        </div>
+                                        <div className='product-label-group'>
+                                            <div className='product-label'>
+                                                <span>New</span>
+                                            </div>
+                                            <div className='product-label-sale'>
+                                                <span>-7%</span>
                                             </div>
                                         </div>
                                     </div>

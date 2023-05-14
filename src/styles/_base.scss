@@ -12,6 +12,23 @@ html {
   overflow: hidden;
 }
 
+
+
+.grid {
+  width: 1600px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.grid-full-width {
+  width: 100%;
+}
+
+.grid-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .content-container {
   .title {
     text-align: center;
