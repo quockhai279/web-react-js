@@ -4,6 +4,7 @@ import './HomeHeader.scss';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../utils'
 import { changeLanguageApp } from '../../store/actions'
+import { withRouter } from 'react-router'
 import logo from "../../assets/logo.png"
 
 // import { IconName } from "react-icons/fa";
@@ -13,15 +14,18 @@ class HomeHeader extends Component {
         this.props.changeLanguageAppRedux(language)
     }
 
+    returnToHome = () => {
+        if (this.props.history) {
+            this.props.history.push(`/home`)
+        }
+    }
+
     render() {
         let language = this.props.language
         return (
             <React.Fragment>
                 <section className='header-navbar-homepage'>
                     <div className='header-navbar-container-top'>
-                        {/* <i className='fas fa-question-circle'></i><FormattedMessage id={'homeheader.help'} />
-                        <div className='language'>
-                        </div> */}
                         <ul className='header-navbar-list'>
                             <li className='header-navbar-item header-navbar-item-separate'>
                                 <i className='fas fa-question-circle navbar-icon'></i>
@@ -40,7 +44,9 @@ class HomeHeader extends Component {
                         </ul>
                     </div>
                     <div className='header-navbar-container-bottom'>
-                        <a href='#' className='header-logo' ><img src={logo} /></a>
+                        <div className='header-logo' >
+                            <img className='header-logo-img' src={logo} onClick={() => this.returnToHome()} />
+                        </div>
                         <div>
                             <ul id='navbar' className='header-navbar'>
                                 <li><a className='active' href=''>Home</a></li>
@@ -54,7 +60,7 @@ class HomeHeader extends Component {
                                         <input type='text' placeholder='Tìm kiếm sản phẩm' ></input>
                                     </div>
                                 </li>
-                                <li><a href=''><i class="fa fa-shopping-bag"></i></a></li>
+                                <li><a href=''><i className="fa fa-shopping-bag"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -119,4 +125,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));

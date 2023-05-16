@@ -42,6 +42,9 @@
             "manage-product-redux": "Quản lý sản phẩm redux",
             "purchase-order": "Đơn đặt hàng",
             "manage-order": "Quản lý đơn hàng"
+        },
+        "doctor": {
+            "manage-schedule": "Quản lý kế hoạch khám bệnh"
         }
     },
     "manage-user": {

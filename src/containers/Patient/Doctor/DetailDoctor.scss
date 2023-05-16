@@ -1,19 +1,25 @@
 .doctor-detail-container {
-    height: 500px;
-    border: 1px solid red;
-
+    height: 1500px;
+    margin-top: 20px;
     .intro-doctor {
+        
         display: flex;
-        height: 100px;
+        margin: 0 50px;
 
         .content-left {
-            width: 30%;
+            height: 120px;
+            width: 120px;
             border: 1px solid green;
+            border-radius: 50%;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            margin: 10px 20px;
         }
 
         .content-right {
             width: 70%;
-            border: 1px solid green;
             display: flex;
             flex-direction: column;
             padding-left: 10px;
@@ -28,5 +34,20 @@
             }
         }
     }
+    .detail-info-doctor{  
+        border-top: 1px solid #ddd ;
+        padding: 20px 20px;
+        background-color: #f3f3f3;
+        h3{
+            font-size: 17px;
+        }
 
+        img{
+            width: 900px;
+            
+        }
+    }
+    .comment-doctor{
+        height: 50px;
+    }
 }

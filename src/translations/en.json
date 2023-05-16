@@ -42,6 +42,9 @@
             "manage-product-redux": "Manage product redux",
             "purchase-order": "Purchase order",
             "manage-order": "Order management"
+        },
+        "doctor": {
+            "manage-schedule": "Manage doctor schedule"
         }
     },
     "manage-user": {

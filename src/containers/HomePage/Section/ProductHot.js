@@ -30,8 +30,9 @@ class ProductHot extends Component {
     }
 
     handleViewDetailDoctor = (doctor) => {
-        console.log('view info doctor:', doctor);
-        this.props.history.push(`/users/${doctor.id}`)
+        if (this.props.history) {
+            this.props.history.push(`/users/${doctor.id}`)
+        }
     }
 
     render() {
@@ -51,8 +52,8 @@ class ProductHot extends Component {
                                 if (item.image) {
                                     imageBase64 = new Buffer(item.image, 'base64').toString('binary')
                                 }
-                                let nameVi = `${item.positionData.valueVi}, ${item.firstName}, ${item.lastName}`;
-                                let nameEn = `${item.positionData.valueEn}, ${item.firstName}, ${item.lastName}`;
+                                let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName} `;
+                                let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                 return (
                                     <div className='img-customize' key={index} onClick={() => this.handleViewDetailDoctor(item)}>
                                         <div

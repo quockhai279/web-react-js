@@ -1,80 +1,85 @@
 .home-footer {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 30px;
-    padding: 0 40px;
-    justify-content: space-between;
+    margin-top: 20px;
+    border-top: 1px solid gainsboro;
 
-    .col {
+    .home-footer-container {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        padding: 0 40px;
+        justify-content: space-between;
 
-        .footer-logo {
-            margin-bottom: 30px;
-        }
+        .col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
 
-        h4 {
-            padding-bottom: 10px;
-        }
-
-        p {
-            margin: 0 0 8px 0;
-        }
-
-        a {
-            text-decoration: none;
-            color: #222;
-            margin: 0 0 8px 0;
-
-            &:hover {
-                color: #047e76;
+            .footer-logo {
+                margin-bottom: 30px;
             }
-        }
 
-        .follow {
-            margin-top: 10px;
+            h4 {
+                padding-bottom: 10px;
+            }
 
-            i {
-                cursor: pointer;
-                color: #465b52;
-                padding-right: 10px;
+            p {
+                margin: 0 0 8px 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: #222;
+                margin: 0 0 8px 0;
 
                 &:hover {
-                    color: red;
+                    color: #047e76;
+                }
+            }
+
+            .follow {
+                margin-top: 10px;
+
+                i {
+                    cursor: pointer;
+                    color: #465b52;
+                    padding-right: 10px;
+
+                    &:hover {
+                        color: red;
+                    }
+                }
+            }
+
+
+        }
+
+        .install {
+            img {
+                cursor: pointer;
+                margin: 0 5px 10px 0;
+
+            }
+
+            .row {
+                img {
+                    border-radius: 6px;
+                    border: 1px solid #088178;
                 }
             }
         }
-
-
     }
 
-    .install {
-        img {
-            cursor: pointer;
-            margin: 0 5px 10px 0;
+    .copyright {
+        width: 100%;
+        text-align: center !important;
 
-        }
-
-        .row {
-            img {
-                border-radius: 6px;
-                border: 1px solid #088178;
-            }
+        p {
+            margin-bottom: 0 !important;
         }
     }
-}
 
-.copyright {
-    width: 100%;
-    text-align: center !important;
-
-    p {
-        margin-bottom: 0 !important;
+    h4 {
+        font-weight: bold;
+        margin-bottom: 0;
     }
-}
-
-h4 {
-    font-weight: bold;
-    margin-bottom: 0;
 }
