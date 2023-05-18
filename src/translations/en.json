@@ -38,7 +38,8 @@
             "crud": "CRUD user",
             "crud-redux": "CRUD redux",
             "product": "Product",
-            "manage-product": "Manage product",
+            "manage-product-category": "Manage product category",
+            "manage-type-of-product": "Manage type of product",
             "manage-product-redux": "Manage product redux",
             "purchase-order": "Purchase order",
             "manage-order": "Order management"
@@ -61,5 +62,8 @@
         "Save": "Save",
         "Edit": "Save changes",
         "upLoadImd": "Upload Img"
+    },
+    "manage-schedule": {
+        "title": "Manage doctor's examination plan"
     }
 }

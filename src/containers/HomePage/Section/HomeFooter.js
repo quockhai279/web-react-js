@@ -48,7 +48,7 @@ class Footer extends Component {
                     <div className='col install'>
                         <h4>Install App</h4>
                         <p>From App Store or Google Play</p>
-                        <div className='row'>
+                        <div className='row-icon'>
                             <img src={logoApp} alt='' />
                             <img src={logoPlay} alt='' />
                         </div>

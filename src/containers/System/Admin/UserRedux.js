@@ -79,7 +79,6 @@ class UserRedux extends Component {
                 position: arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : ''
             })
         }
-
         if (prevProps.listUsers !== this.props.listUsers) {
             let arrGenders = this.props.genderRedux
             let arrRoles = this.props.roleRedux
@@ -293,6 +292,7 @@ class UserRedux extends Component {
                                     value={position}
                                     onChange={(event) => { this.onChangeInput(event, 'position') }}
                                 >
+                                    {/* <option>Select</option> */}
                                     {positionArr && positionArr.length > 0 &&
                                         positionArr.map((item, index) => {
                                             return (

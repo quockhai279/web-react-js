@@ -14,6 +14,7 @@ import HomePage from './HomePage/HomePage';
 import CustomScrollbars from "../components/CustomScrollbars"
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
 import ProductDetail from './HomePage/ProductNew/ProductDetail';
+import Doctor from '../routes/Doctor';
 
 class App extends Component {
 
@@ -46,9 +47,11 @@ class App extends Component {
                                     <Route path={path.HOME} exact component={(Home)} />
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                     <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
+
                                     <Route path={path.HOMEPAGE} component={HomePage} />
-                                    <Route path="/products/:id" component={ProductDetail} />
-                                    <Route path="/users/:id" component={DetailDoctor} />
+                                    <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
+                                    <Route path={path.DETAIL_PRODUCT} component={ProductDetail} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>

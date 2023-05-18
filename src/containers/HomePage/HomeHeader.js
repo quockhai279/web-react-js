@@ -44,24 +44,35 @@ class HomeHeader extends Component {
                         </ul>
                     </div>
                     <div className='header-navbar-container-bottom'>
+                        <div className='navbar-bottom-left'>
+                        </div>
                         <div className='header-logo' >
                             <img className='header-logo-img' src={logo} onClick={() => this.returnToHome()} />
                         </div>
-                        <div>
+                        <div className='navbar-bottom-center'>
                             <ul id='navbar' className='header-navbar'>
                                 <li><a className='active' href=''>Home</a></li>
                                 <li><a href=''>Shop</a></li>
                                 <li><a href=''>Sale</a></li>
                                 <li><a href=''>Blog</a></li>
                                 <li><a href=''>Contact</a></li>
-                                <li>
+                                {/* <li>
                                     <div className='header-navbar-search'>
                                         <i className='fas fa-search'></i>
                                         <input type='text' placeholder='Tìm kiếm sản phẩm' ></input>
                                     </div>
                                 </li>
-                                <li><a href=''><i className="fa fa-shopping-bag"></i></a></li>
+                                <li><a href=''><i className="fa fa-shopping-bag"></i></a></li> */}
                             </ul>
+                        </div>
+                        <div className='navbar-bottom-right'>
+                            <div className='header-navbar-search'>
+                                <i className='fas fa-search'></i>
+                                <input type='text' placeholder='Tìm kiếm sản phẩm' ></input>
+                            </div>
+                            <div className='icon-shopping-bag'>
+                                <a href=''><i className="fa fa-shopping-bag"></i></a>
+                            </div>
                         </div>
                     </div>
                 </section>

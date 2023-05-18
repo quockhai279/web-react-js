@@ -28,7 +28,9 @@ class Product extends Component {
     }
 
     handleViewProductDetail = (product) => {
-        this.props.history.push(`/products/${product.id}`)
+        if (this.props.history) {
+            this.props.history.push(`/detail-product/${product.id}`)
+        }
     }
 
     render() {

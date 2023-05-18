@@ -38,7 +38,8 @@
             "crud": "CRUD user",
             "crud-redux": "CRUD redux",
             "product": "Sản phẩm",
-            "manage-product": "Quản lý sản phẩm",
+            "manage-product-category": "Quản lý danh mục",
+            "manage-type-of-product": "Quản lý loại sản phẩm",
             "manage-product-redux": "Quản lý sản phẩm redux",
             "purchase-order": "Đơn đặt hàng",
             "manage-order": "Quản lý đơn hàng"
@@ -61,5 +62,8 @@
         "Save": "Lưu",
         "Edit": "Lưu thay đổi",
         "upLoadImd": "Tải ảnh"
+    },
+    "manage-schedule": {
+        "title": "Quản lý kế hoạch khám bệnh của bác sĩ"
     }
 }
