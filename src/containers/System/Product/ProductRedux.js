@@ -162,10 +162,17 @@ class ProductRedux extends Component {
                                 />
                             </div>
                             <div className='col-3'>
-                                <label>Giá</label>
+                                <label>Giá khuyến mãi</label>
                                 <input className='form-control' type='text'
                                     value={price}
                                     onChange={(event) => { this.onChangeInput(event, 'price') }}
+                                />
+                            </div>
+                            <div className='col-3'>
+                                <label>Giá sản phẩm</label>
+                                <input className='form-control' type='text'
+                                // value={price}
+                                // onChange={(event) => { this.onChangeInput(event, 'price') }}
                                 />
                             </div>
                             <div className='col-3'>
