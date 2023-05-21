@@ -7,16 +7,27 @@ import { changeLanguageApp } from '../../store/actions'
 import { withRouter } from 'react-router'
 import logo from "../../assets/logo.png"
 
-// import { IconName } from "react-icons/fa";
 
 class HomeHeader extends Component {
     changeLanguage = (language) => {
         this.props.changeLanguageAppRedux(language)
     }
 
-    returnToHome = () => {
+    returnToShop = () => {
         if (this.props.history) {
-            this.props.history.push(`/home`)
+            this.props.history.push(`/Shop`)
+        }
+    }
+
+    returnToContact = () => {
+        if (this.props.history) {
+            this.props.history.push(`/Contact`)
+        }
+    }
+
+    returnToCart = () => {
+        if (this.props.history) {
+            this.props.history.push(`/Cart`)
         }
     }
 
@@ -47,22 +58,15 @@ class HomeHeader extends Component {
                         <div className='navbar-bottom-left'>
                         </div>
                         <div className='header-logo' >
-                            <img className='header-logo-img' src={logo} onClick={() => this.returnToHome()} />
+                            <img className='header-logo-img' src={logo} onClick={() => this.returnToShop()} />
                         </div>
                         <div className='navbar-bottom-center'>
                             <ul id='navbar' className='header-navbar'>
-                                <li><a className='active' href=''>Home</a></li>
-                                <li><a href=''>Shop</a></li>
+                                <li><a href=''>Home</a></li>
+                                <li><a className='active' href='' onClick={() => this.returnToShop()}>Shop</a></li>
                                 <li><a href=''>Sale</a></li>
                                 <li><a href=''>Blog</a></li>
-                                <li><a href=''>Contact</a></li>
-                                {/* <li>
-                                    <div className='header-navbar-search'>
-                                        <i className='fas fa-search'></i>
-                                        <input type='text' placeholder='Tìm kiếm sản phẩm' ></input>
-                                    </div>
-                                </li>
-                                <li><a href=''><i className="fa fa-shopping-bag"></i></a></li> */}
+                                <li><a href='' onClick={() => this.returnToContact()}>Contact</a></li>
                             </ul>
                         </div>
                         <div className='navbar-bottom-right'>
@@ -71,7 +75,7 @@ class HomeHeader extends Component {
                                 <input type='text' placeholder='Tìm kiếm sản phẩm' ></input>
                             </div>
                             <div className='icon-shopping-bag'>
-                                <a href=''><i className="fa fa-shopping-bag"></i></a>
+                                <a href=''><i className="fa fa-shopping-bag" onClick={() => this.returnToCart()}></i></a>
                             </div>
                         </div>
                     </div>

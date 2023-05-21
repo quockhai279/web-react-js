@@ -126,13 +126,23 @@ class ProductDetail extends Component {
                                 <div className='button-productDetail'>
                                     <button className='btn-product btn btn-outline-dark px-5 py-3'>Mua ngay</button>
                                     <button className='btn-product btn btn-warning px-5 py-3'>
-                                        <i class="productDetail-icon fa-solid fa-cart-shopping"></i>
+                                        <i className="productDetail-icon fa-solid fa-cart-shopping"></i>
                                         <span>Them vao gio</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div className=''>sdafasdf</div>
+                        <div className=''>
+
+                        </div>
+                    </div>
+                    <div className='product-detail-mid'>
+                        <div className='product-detail-mid-container'>
+                            <div className=''>
+                                <div className=''>Sản phẩm liên quan</div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

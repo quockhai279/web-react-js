@@ -1,11 +1,15 @@
 export const path = {
     HOME: '/',
-    HOMEPAGE: '/home',
+    HOMEPAGE: '/Home',
+    SHOPPAGE: '/Shop',
     LOGIN: '/login',
     LOG_OUT: '/logout',
     SYSTEM: '/system',
     DETAIL_DOCTOR: '/detail-doctor/:id',
     DETAIL_PRODUCT: '/detail-product/:id',
+
+    CONTACT: '/Contact',
+    CART: '/CART'
 
 };
 

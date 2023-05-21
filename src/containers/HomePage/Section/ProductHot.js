@@ -38,6 +38,7 @@ class ProductHot extends Component {
     render() {
         let { arrDoctors } = this.state
         let { language } = this.props
+        console.log('arrDoctors:', arrDoctors);
         arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors)
         return (
             <div className='productHot-container'>

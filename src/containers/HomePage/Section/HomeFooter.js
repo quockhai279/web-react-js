@@ -35,7 +35,7 @@ class Footer extends Component {
                         <a href='#'>Delivery Information</a>
                         <a href='#'>Privacy Policy</a>
                         <a href='#'>Terms & Conditions</a>
-                        <a href='#'>Contact Us</a>
+                        <a href='/Contact'>Contact Us</a>
                     </div>
                     <div className='col'>
                         <h4>My Account</h4>
@@ -57,7 +57,7 @@ class Footer extends Component {
                     </div>
                 </div>
                 <div className='copyright'>
-                    <p>&copy; 2023 - Châu Quốc Khải</p>
+                    <p>&copy; 2023 - Châu Quốc Khải - All rights reserved</p>
                 </div>
             </footer>
         )
