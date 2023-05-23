@@ -6,9 +6,18 @@ import { LANGUAGES } from '../../utils'
 import { changeLanguageApp } from '../../store/actions'
 import { withRouter } from 'react-router'
 import logo from "../../assets/logo.png"
+import { BsCart3 } from "react-icons/bs";
+import CartSideBar from '../Customer/CartSideBar';
 
 
 class HomeHeader extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            OpenViewNavbarCart: false
+        }
+    }
+
     changeLanguage = (language) => {
         this.props.changeLanguageAppRedux(language)
     }
@@ -25,10 +34,16 @@ class HomeHeader extends Component {
         }
     }
 
-    returnToCart = () => {
-        if (this.props.history) {
-            this.props.history.push(`/Cart`)
-        }
+    ShowNavBarCart = () => {
+        this.setState({
+            OpenViewNavbarCart: true
+        })
+    }
+
+    handleCloseNavbarCart = () => {
+        this.setState({
+            OpenViewNavbarCart: !this.state.OpenViewNavbarCart
+        })
     }
 
     render() {
@@ -74,8 +89,13 @@ class HomeHeader extends Component {
                                 <i className='fas fa-search'></i>
                                 <input type='text' placeholder='Tìm kiếm sản phẩm' ></input>
                             </div>
-                            <div className='icon-shopping-bag'>
-                                <a href=''><i className="fa fa-shopping-bag" onClick={() => this.returnToCart()}></i></a>
+                            <div className='icon-shopping-cart'>
+                                <BsCart3 className="fa fa-cart-shopping icon-cart" onClick={() => this.ShowNavBarCart()} />
+                                <span className='cart-notice'>3</span>
+                                <CartSideBar
+                                    isOpen={this.state.OpenViewNavbarCart}
+                                    isClose={this.handleCloseNavbarCart}
+                                />
                             </div>
                         </div>
                     </div>

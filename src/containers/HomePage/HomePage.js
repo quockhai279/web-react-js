@@ -7,10 +7,10 @@ import PromotionalProducts from './Section/PromotionalProducts'
 import HandBook from './Section/HandBook'
 import About from './Section/About'
 import HomeFooter from './Section/HomeFooter'
-
 import './HomePage.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 
 
 class HomePage extends Component {

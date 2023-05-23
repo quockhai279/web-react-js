@@ -26,7 +26,7 @@ class Cart extends Component {
                 <HomeHeader
                     isShowBanner={false}
                 />
-                {/* <HightLight /> */}
+                <HightLight />
                 <div className='cart-container'>
                     <div className='cart-container-left row'>
                         <div className='checkout-process-bar'></div>
@@ -47,9 +47,8 @@ class Cart extends Component {
                                         <td><i className="fa-regular fa-circle-xmark"></i></td>
                                         <td>
                                             <img src={logo} className='img-product-cart' />
-
                                         </td>
-                                        <td>Sneaker air force</td>
+                                        <td className='title-product-cart'>Sneaker air force</td>
                                         <td>2.800.000 đ</td>
                                         <td>
                                             <input type='number' value={1} />
@@ -62,7 +61,7 @@ class Cart extends Component {
                                             <img src={logo} className='img-product-cart' />
 
                                         </td>
-                                        <td>Sneaker air force</td>
+                                        <td className='title-product-cart'>Sneaker air force</td>
                                         <td>2.800.000 đ</td>
                                         <td>
                                             <input type='number' value={1} />
@@ -75,7 +74,7 @@ class Cart extends Component {
                                             <img src={logo} className='img-product-cart' />
 
                                         </td>
-                                        <td>Sneaker air force</td>
+                                        <td className='title-product-cart'>Sneaker air force</td>
                                         <td>2.800.000 đ</td>
                                         <td>
                                             <input type='number' value={1} />
@@ -98,6 +97,10 @@ class Cart extends Component {
 
                                 </tbody>
                             </table>
+                            <button className='btn btn-primary btn-continue-shopping btn-ivy'>
+                                <i class="fa-solid fa-arrow-left distance"></i>
+                                Tiếp tục mua hàng
+                            </button>
                         </div>
                         <div className='cart-summary col-4'>
                             <span>Tổng tiền giỏ hàng</span>
@@ -122,12 +125,8 @@ class Cart extends Component {
                             <div className='cart-summary-line'></div>
                             <button className='btn-summary'>Đặt hàng</button>
                         </div>
-
                     </div>
-
                 </div >
-
-
                 <HomeFooter />
             </>
         );

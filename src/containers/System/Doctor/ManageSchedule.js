@@ -162,7 +162,6 @@ class ManageSchedule extends Component {
                                 minDate={new Date()}
                             />
                         </div>
-
                         <div className='col-12 my-5 pick-hour-container'>
                             {rangeTime && rangeTime.length > 0 &&
                                 rangeTime.map((item, index) => {

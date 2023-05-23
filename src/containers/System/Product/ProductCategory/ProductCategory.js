@@ -13,8 +13,8 @@ class ProductCategory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category: '',
-            nameCategory: '',
+            codeCategory: '',
+            type: '',
             nameVi: '',
             nameEn: '',
 
@@ -89,17 +89,18 @@ class ProductCategory extends Component {
     }
 
     onChangeInput = (event, id) => {
-        let copyState = { ...this.state }
-        copyState[id] = event.target.value
-        this.setState({
-            ...copyState
-        })
+        console.log('on change input', this.state);
+        // let copyState = { ...this.state }
+        // copyState[id] = event.target.value
+        // this.setState({
+        //     ...copyState
+        // })
     }
 
 
 
     render() {
-        let { nameCategory, nameVi, nameEn } = this.state
+        let { codeCategory, type, nameVi, nameEn } = this.state
 
         return (
             <div className='product-redux-container'>
@@ -109,10 +110,17 @@ class ProductCategory extends Component {
                         <div className='row'>
                             <div className='col-12 my-3'>Thêm mới danh mục sản phảm</div>
                             <div className='col-3'>
-                                <label>Tên danh mục</label>
+                                <label>Mã danh mục</label>
                                 <input className='form-control' type='text'
-                                    value={nameCategory}
-                                    onChange={(event) => { this.onChangeInput(event, 'nameCategory') }}
+                                    value={codeCategory}
+                                    onChange={(event) => { this.onChangeInput(event, 'codeCategory') }}
+                                />
+                            </div>
+                            <div className='col-3'>
+                                <label>Kiểu danh mục</label>
+                                <input className='form-control' type='text'
+                                    value={type}
+                                    onChange={(event) => { this.onChangeInput(event, 'type') }}
                                 />
                             </div>
                             <div className='col-3'>

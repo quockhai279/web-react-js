@@ -1,12 +1,8 @@
 .cart-container {
-    border : 1px solid red;
-    padding: 50px 50px 30px 50px;
-    height : 1000px;
-
+    padding   : 50px 50px 30px 50px;
+    min-height: 100vh;
 
     .cart-container-table {
-        height: 100%;
-
 
         table {
             width          : 100%;
@@ -52,6 +48,11 @@
                 font-size    : 17px;
                 border-bottom: 1px solid #e0e0e0;
 
+                .title-product-cart {
+                    overflow     : hidden;
+                    text-overflow: ellipsis;
+                    white-space  : normal;
+                }
 
                 td {
                     padding: 15px;
@@ -123,6 +124,18 @@
                 background-color: white;
             }
         }
+    }
 
+    .btn-continue-shopping {
+        margin-top    : 20px;
+        border-radius : 25px 0 25px 0;
+        width         : 250px;
+        height        : 50px;
+        text-transform: uppercase;
+        box-sizing    : border-box;
+
+        .distance {
+            padding-right: 10px;
+        }
     }
 }
