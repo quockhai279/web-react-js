@@ -3,7 +3,10 @@ import { toast } from 'react-toastify';
 import {
     getAllProducts, createNewProductService,
     deleteProductService, editProductService,
-    getAllProductsListHome
+    getAllProductsListHome,
+
+    createNewCategoryService, getAllCategories, deleteProductCategoryService,
+
 } from '../../services/productService'
 
 export const createNewProduct = (data) => {
@@ -139,6 +142,84 @@ export const fetchProductListHome = () => {
     }
 }
 
+//Category 
+
+export const createNewCategory = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await createNewCategoryService(data);
+            if (res && res.errCode === 0) {
+                toast.success("Create a new product category success")
+                dispatch(saveCategorySuccess())
+                dispatch(fetchAllCategoriesStart())
+            } else {
+                dispatch(saveCategoryFailed())
+            }
+        } catch (e) {
+            dispatch(saveCategoryFailed())
+            console.log('save product category failed', e);
+        }
+    }
+}
+
+export const saveCategorySuccess = () => ({
+    type: actionTypes.CREATE_PRODUCT_CATEGORY_SUCCESS
+})
+
+export const saveCategoryFailed = () => ({
+    type: actionTypes.CREATE_PRODUCT_CATEGORY_FAILED
+})
+
+export const fetchAllCategoriesStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCategories("ALL")
+            if (res && res.errCode === 0) {
+                dispatch(fetchAllCategoriesSuccess(res.categories.reverse()))
+            } else {
+                toast.error("Fetch all product category failed")
+                dispatch(fetchAllCategoriesFailed())
+            }
+        } catch (e) {
+            toast.error("Fetch all product category failed")
+            dispatch(fetchAllCategoriesFailed())
+            console.log('Fetch all products category error:', e);
+        }
+    }
+}
+
+export const fetchAllCategoriesSuccess = (data) => ({
+    type: actionTypes.FETCH_ALL_CATEGORY_SUCCESS,
+    categories: data
+})
+
+export const fetchAllCategoriesFailed = () => ({
+    type: actionTypes.FETCH_ALL_CATEGORY_FAILED,
+})
 
 
+export const deleteCategory = (categoryId) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await deleteProductCategoryService(categoryId);
+            if (res && res.errCode === 0) {
+                toast.success("Delete product category success")
+                dispatch({
+                    type: actionTypes.DELETE_PRODUCT_CATEGORY_SUCCESS
+                })
+                dispatch(fetchAllCategoriesStart())
+            } else {
+                toast.error("Delete product category failed")
+                dispatch({
+                    type: actionTypes.DELETE_PRODUCT_CATEGORY_FAILED
+                })
+            }
+        } catch (e) {
+            console.log('Delete product category failed', e);
+            dispatch({
+                type: actionTypes.DELETE_PRODUCT_CATEGORY_FAILED
+            })
+        }
+    }
+}
 

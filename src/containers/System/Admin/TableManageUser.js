@@ -9,12 +9,12 @@ import MdEditor from 'react-markdown-editor-lite';
 
 import 'react-markdown-editor-lite/lib/index.css';
 
-const mdParser = new MarkdownIt(/* Markdown-it options */);
+// const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 
-function handleEditorChange({ html, text }) {
-    console.log('handleEditorChange', html, text);
-}
+// function handleEditorChange({ html, text }) {
+//     console.log('handleEditorChange', html, text);
+// }
 
 class TableManageUser extends Component {
     constructor(props) {
@@ -51,6 +51,7 @@ class TableManageUser extends Component {
                 <table id='TableManageUser'>
                     <tbody>
                         <tr>
+                            <th>STT</th>
                             <th>Email</th>
                             <th>FirstName</th>
                             <th>LastName</th>
@@ -61,6 +62,7 @@ class TableManageUser extends Component {
                             arrUsers.map((item, index) => {
                                 return (
                                     <tr key={index}>
+                                        <td>{index + 1}</td>
                                         <td>{item.email}</td>
                                         <td>{item.firstName}</td>
                                         <td>{item.lastName}</td>
@@ -80,7 +82,7 @@ class TableManageUser extends Component {
                             })}
                     </tbody>
                 </table>
-                <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
+                {/* <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} /> */}
             </React.Fragment>
 
         );

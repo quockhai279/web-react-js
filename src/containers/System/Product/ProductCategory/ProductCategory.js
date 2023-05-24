@@ -28,12 +28,17 @@ class ProductCategory extends Component {
     }
 
     componentDidUpdate(prevProps, preState, snapshot) {
-        // if (prevProps.listProducts !== this.props.listProducts) {
-        //     this.setState({
+        if (prevProps.listCategories !== this.props.listCategories) {
+            this.setState({
+                action: CRUD_ACTIONS.CREATE,
+                codeCategory: '',
+                type: '',
+                nameVi: '',
+                nameEn: '',
+            })
+        }
 
-        //         action: CRUD_ACTIONS.CREATE,
-        //     })
-        // }
+
     }
 
     handleSaveCategory = () => {
@@ -60,6 +65,17 @@ class ProductCategory extends Component {
         //         image: this.state.image,
         //     })
         // }
+        let isValid = this.checkValidateInput()
+        if (isValid === false) return;
+        //fire redux action
+        this.props.createNewCategory({
+            // key: input state 
+            keyMap: this.state.codeCategory,
+            type: this.state.type,
+            valueEn: this.state.nameEn,
+            valueVi: this.state.nameVi,
+        })
+
     }
 
     handleEditProductCategoryFromParent = (product) => {
@@ -76,25 +92,24 @@ class ProductCategory extends Component {
     }
 
     checkValidateInput = () => {
-        // let isValid = true;
-        // let arrCheck = ['name', 'price', 'quantity', 'description']
-        // for (let i = 0; i < arrCheck.length; i++) {
-        //     if (!this.state[arrCheck[i]]) {
-        //         isValid = false;
-        //         alert('This input is required: ' + arrCheck[i])
-        //         break;
-        //     }
-        // }
-        // return isValid
+        let isValid = true
+        let arrCheck = ["codeCategory", "type", "nameVi", "nameEn"]
+        for (let i = 0; i < arrCheck.length; i++) {
+            if (!this.state[arrCheck[i]]) {
+                isValid = false;
+                alert('This input is required: ' + arrCheck[i])
+                break;
+            }
+        }
+        return isValid
     }
 
     onChangeInput = (event, id) => {
-        console.log('on change input', this.state);
-        // let copyState = { ...this.state }
-        // copyState[id] = event.target.value
-        // this.setState({
-        //     ...copyState
-        // })
+        let copyState = { ...this.state }
+        copyState[id] = event.target.value
+        this.setState({
+            ...copyState
+        })
     }
 
 
@@ -110,13 +125,6 @@ class ProductCategory extends Component {
                         <div className='row'>
                             <div className='col-12 my-3'>Thêm mới danh mục sản phảm</div>
                             <div className='col-3'>
-                                <label>Mã danh mục</label>
-                                <input className='form-control' type='text'
-                                    value={codeCategory}
-                                    onChange={(event) => { this.onChangeInput(event, 'codeCategory') }}
-                                />
-                            </div>
-                            <div className='col-3'>
                                 <label>Kiểu danh mục</label>
                                 <input className='form-control' type='text'
                                     value={type}
@@ -124,10 +132,10 @@ class ProductCategory extends Component {
                                 />
                             </div>
                             <div className='col-3'>
-                                <label>Tên tiếng Việt</label>
+                                <label>Mã danh mục</label>
                                 <input className='form-control' type='text'
-                                    value={nameVi}
-                                    onChange={(event) => { this.onChangeInput(event, 'nameVi') }}
+                                    value={codeCategory}
+                                    onChange={(event) => { this.onChangeInput(event, 'codeCategory') }}
                                 />
                             </div>
                             <div className='col-3'>
@@ -135,6 +143,13 @@ class ProductCategory extends Component {
                                 <input className='form-control' type='text'
                                     value={nameEn}
                                     onChange={(event) => { this.onChangeInput(event, 'nameEn') }}
+                                />
+                            </div>
+                            <div className='col-3'>
+                                <label>Tên tiếng Việt</label>
+                                <input className='form-control' type='text'
+                                    value={nameVi}
+                                    onChange={(event) => { this.onChangeInput(event, 'nameVi') }}
                                 />
                             </div>
                             <div className='col-12 my-3'>
@@ -150,9 +165,6 @@ class ProductCategory extends Component {
                                 </button>
                             </div>
                             <div className='col-12 mb-5'>
-                                {/* <TableManageProduct
-                                handleEditProductFromParentKey={this.handleEditProductFromParent}
-                                /> */}
                                 <TableProductCategory
                                     handleEditProductCategoryFromParentKey={this.handleEditProductCategoryFromParent}
                                 />
@@ -167,16 +179,15 @@ class ProductCategory extends Component {
 
 const mapStateToProps = state => {
     return {
-        // language: state.app.language,
-        listProducts: state.product.products
+        language: state.app.language,
+        listCategories: state.product.categories
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        createNewProduct: (data) => dispatch(actions.createNewProduct(data)),
-        fetchProductRedux: () => dispatch(actions.fetchAllProductsStart()),
-        editAProductRedux: (data) => dispatch(actions.editAProduct(data))
+        createNewCategory: (data) => dispatch(actions.createNewCategory(data)),
+        fetchCategoryRedux: () => dispatch(actions.fetchAllCategoriesStart()),
     };
 };
 

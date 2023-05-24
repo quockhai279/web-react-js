@@ -3,6 +3,7 @@ import actionTypes from '../actions/actionTypes';
 const initialState = {
     products: [],
     listProductsHome: [],
+    categories: [],
 
 }
 
@@ -34,6 +35,17 @@ const productReducer = (state = initialState, action) => {
             return {
                 ...state
             }
+        case actionTypes.FETCH_ALL_CATEGORY_SUCCESS:
+            state.categories = action.categories
+            return {
+                ...state
+            }
+        case actionTypes.FETCH_ALL_CATEGORY_FAILED:
+            state.categories = []
+            return {
+                ...state
+            }
+
 
         default:
             return state;

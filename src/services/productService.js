@@ -26,9 +26,28 @@ const getAllProductsListHome = (limit) => {
     return axios.get(`/api/product-list-home?limit=${limit}`)
 }
 
+//product category api
+
+const getAllCategories = (inputId) => {
+    return axios.get(`/api/get-all-category?id=${inputId}`)
+}
+
+const createNewCategoryService = (data) => {
+    return axios.post('/api/create-new-category', data)
+}
+
+const deleteProductCategoryService = (categoryId) => {
+    return axios.delete('/api/delete-product-category', {
+        data: {
+            id: categoryId
+        }
+    })
+}
 
 export {
     getAllProducts, createNewProductService, deleteProductService, editProductService,
-    getAllProductsListHome
+    getAllProductsListHome,
+
+    getAllCategories, createNewCategoryService, deleteProductCategoryService
 
 }
