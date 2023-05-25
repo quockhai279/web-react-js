@@ -44,10 +44,14 @@ const deleteProductCategoryService = (categoryId) => {
     })
 }
 
+const editProductCategoryService = (inputData) => {
+    return axios.put('/api/edit-product-category', inputData)
+}
+
 export {
     getAllProducts, createNewProductService, deleteProductService, editProductService,
     getAllProductsListHome,
 
-    getAllCategories, createNewCategoryService, deleteProductCategoryService
+    getAllCategories, createNewCategoryService, deleteProductCategoryService, editProductCategoryService
 
 }

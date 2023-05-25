@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import './TableProductCategory.scss';
 import * as actions from "../../../../store/actions"
 
-class TableManageProduct extends Component {
+class TableProductCategory extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,8 +27,8 @@ class TableManageProduct extends Component {
         this.props.deleteCategoryRedux(category.id)
     }
 
-    handleEditCategory = (productCategory) => {
-        this.props.handleEditProductCategoryFromParent(productCategory)
+    handleEditCategory = (category) => {
+        this.props.handleEditProductCategoryFromParentKey(category)
     }
 
     render() {
@@ -41,8 +40,6 @@ class TableManageProduct extends Component {
                 <tbody>
                     <tr>
                         <th>STT</th>
-                        <th>Type</th>
-                        <th>Code</th>
                         <th>Name EN</th>
                         <th>Name VN</th>
                         <th>Action</th>
@@ -52,8 +49,6 @@ class TableManageProduct extends Component {
                             return (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td>{item.type}</td>
-                                    <td>{item.keyMap}</td>
                                     <td>{item.valueEn}</td>
                                     <td>{item.valueVi}</td>
                                     <td>
@@ -88,4 +83,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableManageProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(TableProductCategory);

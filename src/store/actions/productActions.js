@@ -6,7 +6,7 @@ import {
     getAllProductsListHome,
 
     createNewCategoryService, getAllCategories, deleteProductCategoryService,
-
+    editProductCategoryService
 } from '../../services/productService'
 
 export const createNewProduct = (data) => {
@@ -218,6 +218,32 @@ export const deleteCategory = (categoryId) => {
             console.log('Delete product category failed', e);
             dispatch({
                 type: actionTypes.DELETE_PRODUCT_CATEGORY_FAILED
+            })
+        }
+    }
+}
+
+export const editCategory = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await editProductCategoryService(data);
+            if (res && res.errCode === 0) {
+                toast.success("Edit product category success")
+                dispatch({
+                    type: actionTypes.EDIT_PRODUCT_CATEGORY_SUCCESS
+                })
+                dispatch(fetchAllCategoriesStart())
+            } else {
+                toast.error("Edit product category failed")
+                dispatch({
+                    type: actionTypes.EDIT_PRODUCT_CATEGORY_FAILED
+                })
+            }
+        } catch (e) {
+            toast.error("Edit product category failed")
+            console.log('Edit product category failed', e);
+            dispatch({
+                type: actionTypes.EDIT_PRODUCT_CATEGORY_FAILED
             })
         }
     }

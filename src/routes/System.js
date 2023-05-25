@@ -5,6 +5,7 @@ import UserManage from '../containers/System/UserManage';
 import UserRedux from '../containers/System/Admin/UserRedux';
 import ProductRedux from '../containers/System/Product/ProductRedux'
 import ProductCategory from '../containers/System/Product/ProductCategory/ProductCategory'
+import ProductType from '../containers/System/Product/ProductType/ProductType'
 import ManageDoctor from '../containers/System/Admin/ManageDoctor';
 
 import Header from '../containers/Header/Header';
@@ -23,6 +24,7 @@ class System extends Component {
                             <Route path="/system/manage-doctor" component={ManageDoctor} />
                             <Route path="/system/product-redux" component={ProductRedux} />
                             <Route path="/system/product-category" component={ProductCategory} />
+                            <Route path="/system/product-type" component={ProductType} />
                             <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                         </Switch>
                     </div>

@@ -3,22 +3,19 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from '../../../../utils';
 import * as actions from '../../../../store/actions'
-import './ProductCategory.scss'
 import 'react-image-lightbox/style.css';
 import TableProductCategory from '../../Product/ProductCategory/TableProductCategory';
-
-
 
 class ProductCategory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            codeCategory: '',
-            type: '',
+
             nameVi: '',
             nameEn: '',
 
             action: '',
+            categoryEditId: ''
 
         }
     }
@@ -30,11 +27,10 @@ class ProductCategory extends Component {
     componentDidUpdate(prevProps, preState, snapshot) {
         if (prevProps.listCategories !== this.props.listCategories) {
             this.setState({
-                action: CRUD_ACTIONS.CREATE,
-                codeCategory: '',
-                type: '',
                 nameVi: '',
                 nameEn: '',
+                action: CRUD_ACTIONS.CREATE,
+
             })
         }
 
@@ -42,58 +38,38 @@ class ProductCategory extends Component {
     }
 
     handleSaveCategory = () => {
-        // let isValid = this.checkValidateInput()
-        // if (isValid === false) return
-        // let { action } = this.state
-        // if (action === CRUD_ACTIONS.CREATE) {
-        //     //fire redux create product action
-        //     this.props.createNewProduct({
-        //         name: this.state.name,
-        //         price: this.state.price,
-        //         quantity: this.state.quantity,
-        //         description: this.state.description,
-        //         image: this.state.image,
-        //     })
-        // }
-        // if (action === CRUD_ACTIONS.EDIT) {
-        //     this.props.editAProductRedux({
-        //         id: this.state.productEditId,
-        //         name: this.state.name,
-        //         price: this.state.price,
-        //         quantity: this.state.quantity,
-        //         description: this.state.description,
-        //         image: this.state.image,
-        //     })
-        // }
         let isValid = this.checkValidateInput()
-        if (isValid === false) return;
-        //fire redux action
-        this.props.createNewCategory({
-            // key: input state 
-            keyMap: this.state.codeCategory,
-            type: this.state.type,
-            valueEn: this.state.nameEn,
-            valueVi: this.state.nameVi,
-        })
-
+        if (isValid === false) return
+        let { action } = this.state
+        if (action === CRUD_ACTIONS.CREATE) {
+            this.props.createNewCategory({
+                // key: input state 
+                valueEn: this.state.nameEn,
+                valueVi: this.state.nameVi,
+            })
+        }
+        if (action === CRUD_ACTIONS.EDIT) {
+            this.props.editCategoryRedux({
+                id: this.state.categoryEditId,
+                valueEn: this.state.nameEn,
+                valueVi: this.state.nameVi,
+            })
+        }
     }
 
-    handleEditProductCategoryFromParent = (product) => {
-
+    handleEditProductCategoryFromParent = (category) => {
         this.setState({
-            // name: product.name,
-            // price: product.price,
-            // quantity: product.quantity,
-            // description: product.description,
-            // image: '',
-            // action: CRUD_ACTIONS.EDIT,
-            // productEditId: product.id
+            //conSangCha
+            nameEn: category.valueEn,
+            nameVi: category.valueVi,
+            action: CRUD_ACTIONS.EDIT,
+            categoryEditId: category.id
         })
     }
 
     checkValidateInput = () => {
         let isValid = true
-        let arrCheck = ["codeCategory", "type", "nameVi", "nameEn"]
+        let arrCheck = ["nameVi", "nameEn"]
         for (let i = 0; i < arrCheck.length; i++) {
             if (!this.state[arrCheck[i]]) {
                 isValid = false;
@@ -112,10 +88,8 @@ class ProductCategory extends Component {
         })
     }
 
-
-
     render() {
-        let { codeCategory, type, nameVi, nameEn } = this.state
+        let { nameVi, nameEn } = this.state
 
         return (
             <div className='product-redux-container'>
@@ -124,20 +98,6 @@ class ProductCategory extends Component {
                     <div className='container'>
                         <div className='row'>
                             <div className='col-12 my-3'>Thêm mới danh mục sản phảm</div>
-                            <div className='col-3'>
-                                <label>Kiểu danh mục</label>
-                                <input className='form-control' type='text'
-                                    value={type}
-                                    onChange={(event) => { this.onChangeInput(event, 'type') }}
-                                />
-                            </div>
-                            <div className='col-3'>
-                                <label>Mã danh mục</label>
-                                <input className='form-control' type='text'
-                                    value={codeCategory}
-                                    onChange={(event) => { this.onChangeInput(event, 'codeCategory') }}
-                                />
-                            </div>
                             <div className='col-3'>
                                 <label>Tên tiếng Anh</label>
                                 <input className='form-control' type='text'
@@ -157,7 +117,8 @@ class ProductCategory extends Component {
                                     className={this.state.action === CRUD_ACTIONS.EDIT ? "btn btn-warning" : "btn btn-primary"}
                                     onClick={() => this.handleSaveCategory()}
                                 >
-                                    {this.state.action === CRUD_ACTIONS.EDIT ?
+                                    {this.state.action === CRUD_ACTIONS.EDIT
+                                        ?
                                         <FormattedMessage id="manage-user.Edit" />
                                         :
                                         <FormattedMessage id="manage-user.Save" />
@@ -188,6 +149,7 @@ const mapDispatchToProps = dispatch => {
     return {
         createNewCategory: (data) => dispatch(actions.createNewCategory(data)),
         fetchCategoryRedux: () => dispatch(actions.fetchAllCategoriesStart()),
+        editCategoryRedux: (data) => dispatch(actions.editCategory(data))
     };
 };
 

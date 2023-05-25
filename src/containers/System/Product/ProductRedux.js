@@ -266,6 +266,7 @@ const mapDispatchToProps = dispatch => {
         createNewProduct: (data) => dispatch(actions.createNewProduct(data)),
         fetchProductRedux: () => dispatch(actions.fetchAllProductsStart()),
         editAProductRedux: (data) => dispatch(actions.editAProduct(data))
+
     };
 };
 
