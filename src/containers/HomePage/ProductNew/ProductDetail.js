@@ -5,8 +5,9 @@ import HomeFooter from '../../HomePage/Section/HomeFooter';
 import productImg2 from "../../../assets/imgProduct/product/nike-air-force.jpeg"
 import productImg1 from "../../../assets/imgProduct/product/nike-air-force-1-shadow-multicolor.jpeg"
 import Slider from "react-slick";
-
 import './ProductDetail.scss'
+import { getDetailInfoProduct } from '../../../services/productService'
+import { LANGUAGES } from '../../../utils';
 class ProductDetail extends Component {
 
     constructor(props) {
@@ -14,17 +15,46 @@ class ProductDetail extends Component {
         this.state = {
             nav1: null,
             nav2: null,
+            detailProduct: {}
         }
     }
 
-    componentDidMount() {
-        this.setState({
-            nav1: this.slider1,
-            nav2: this.slider2
-        });
+    async componentDidMount() {
+        // this.setState({
+        //     nav1: this.slider1,
+        //     nav2: this.slider2
+        // });
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id
+            let res = await getDetailInfoProduct(id)
+            console.log('check res detail product:', res);
+            if (res && res.errCode === 0) {
+                this.setState({
+                    detailProduct: res.data
+                })
+            }
+        }
+    }
+
+    returnToShop = () => {
+        if (this.props.history) {
+            this.props.history.push(`/Shop`)
+        }
     }
 
     render() {
+        console.log('check state product detail aaaaaa: ', this.state);
+        let { language } = this.props
+        let { detailProduct } = this.state
+        let nameVi = '', nameEn = '', nameTypeVi = '', nameTypeEn = '';
+        if (detailProduct && detailProduct.categoryData) {
+            nameVi = `${detailProduct.categoryData.valueVi}`
+            nameEn = `${detailProduct.categoryData.valueEn}`
+        }
+        if (detailProduct && detailProduct.productTypeData) {
+            nameTypeVi = `${detailProduct.productTypeData.valueVi}`
+            nameTypeEn = `${detailProduct.productTypeData.valueEn}`
+        }
         return (
             <>
                 <HomeHeader
@@ -90,8 +120,23 @@ class ProductDetail extends Component {
                                 </Slider>
                             </div>
                             <div className='product-detail-container-title col-md-5'>
-                                <h4 className='product-title-brand text-uppercase'>brand</h4>
-                                <h1 className='product-title display-5'>AIR JORDAN 1 HI TROPHY ROOM CHICAGO</h1>
+                                <div className='product-title-brand text-uppercase'>
+                                    <ol className='breadcrumb-list'>
+                                        <li className='breadcrumb-item'>
+                                            <a className='breadcrumb-link' onClick={() => this.returnToShop()}>Trang chủ</a>
+                                        </li>
+                                        <li className='breadcrumb-item'>
+                                            <a className='breadcrumb-link'>{language === LANGUAGES.VI ? nameVi : nameEn}</a>
+                                        </li>
+                                        <li className='breadcrumb-item'>
+                                            <a className='breadcrumb-link'>{language === LANGUAGES.VI ? nameTypeVi : nameTypeEn}</a>
+                                        </li>
+                                        <li className='breadcrumb-item'>
+                                            <a className=''><strong>Thương hiệu:</strong> {detailProduct.brand}</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <h1 className='product-title display-5'>{detailProduct.name}</h1>
                                 <div className='star fw-bolder'>
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
@@ -99,7 +144,7 @@ class ProductDetail extends Component {
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
                                 </div>
-                                <h3 className='product-price display-5 fw-bold my-3'>40$</h3>
+                                <h3 className='product-price display-5 fw-bold my-3'>{detailProduct.price} đ</h3>
                                 <div className='size-shoes mb-4'>
                                     <div className='list-size-container'>
                                         <button className='btn btn-outline-secondary p-size'>36</button>
@@ -117,11 +162,7 @@ class ProductDetail extends Component {
                                     <button className='button-quantity'>+</button>
                                 </div>
                                 <p className='description-text'>
-                                    Description product asdfadsfdsfasdf
-                                    asdfdsafafadsfdsafasdfsddfnsafbdsabfkj
-                                    sdfdsfsdfdsfdsfadsfadsf dfadsfadsfdssdafasdfds4
-                                    sdfdsfsdfdsfdsfadsfadsfasdfdsaf
-                                    asdfasfasdf
+                                    {detailProduct.description}
                                 </p>
                                 <div className='button-productDetail'>
                                     <button className='btn-product btn btn-outline-dark px-5 py-3'>Mua ngay</button>
@@ -154,7 +195,7 @@ class ProductDetail extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        language: state.app.language,
     };
 };
 

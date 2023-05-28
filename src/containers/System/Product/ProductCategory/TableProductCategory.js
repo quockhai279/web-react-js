@@ -32,8 +32,6 @@ class TableProductCategory extends Component {
     }
 
     render() {
-        console.log('check props', this.props.listCategories);
-        console.log('check state', this.state.categoriesRedux);
         let arrCategories = this.state.categoriesRedux
         return (
             <table id='TableManageProduct'>

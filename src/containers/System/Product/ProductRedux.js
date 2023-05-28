@@ -23,27 +23,54 @@ class ProductRedux extends Component {
             description: '',
             image: '',
             brand: '',
-            size: '',
-            category: '',
+            categoryId: '',
+            productTypeId: '',
 
+            // discount: '',
 
             action: '',
             productEditId: '',
+
+            categoriesRedux: [],
+            productTypeRedux: [],
+
         }
     }
 
     async componentDidMount() {
-
+        this.props.fetchAllCategoryRedux();
+        this.props.fetchAllProductType();
     }
 
     componentDidUpdate(prevProps, preState, snapshot) {
+        if (prevProps.listCategories !== this.props.listCategories) {
+            let arrCategories = this.props.listCategories
+            this.setState({
+                categoriesRedux: arrCategories,
+                // categoryId: arrCategories && arrCategories.length > 0 ? arrCategories[0].id : ''
+            })
+        }
+        if (prevProps.listProductType !== this.props.listProductType) {
+            let arrProductType = this.props.listProductType
+            this.setState({
+                productTypeRedux: arrProductType,
+                // productTypeId: arrProductType && arrProductType.length > 0 ? arrProductType[0].id : ''
+            })
+        }
         if (prevProps.listProducts !== this.props.listProducts) {
+            let arrCategories = this.props.listCategories
+            let arrProductType = this.props.listProductType
             this.setState({
                 name: '',
                 price: '',
                 quantity: '',
                 description: '',
                 image: '',
+                brand: '',
+                categoryId: '',
+                productTypeId: '',
+                // categoryId: arrCategories && arrCategories.length > 0 ? arrCategories[0].id : '',
+                // productTypeId: arrProductType && arrProductType.length > 0 ? arrProductType[0].id : '',
                 previewImgURL: '',
                 action: CRUD_ACTIONS.CREATE,
             })
@@ -82,6 +109,9 @@ class ProductRedux extends Component {
                 quantity: this.state.quantity,
                 description: this.state.description,
                 image: this.state.image,
+                brand: this.state.brand,
+                categoryId: this.state.categoryId,
+                productTypeId: this.state.productTypeId,
             })
         }
         if (action === CRUD_ACTIONS.EDIT) {
@@ -92,6 +122,9 @@ class ProductRedux extends Component {
                 quantity: this.state.quantity,
                 description: this.state.description,
                 image: this.state.image,
+                brand: this.state.brand,
+                categoryId: this.state.categoryId,
+                productTypeId: this.state.productTypeId,
             })
         }
     }
@@ -107,6 +140,9 @@ class ProductRedux extends Component {
             quantity: product.quantity,
             description: product.description,
             image: '',
+            brand: product.brand,
+            categoryId: product.categoryId,
+            productTypeId: product.productTypeId,
             previewImgURL: imageBuffer64,
             action: CRUD_ACTIONS.EDIT,
             productEditId: product.id
@@ -137,8 +173,12 @@ class ProductRedux extends Component {
 
 
     render() {
-        let { name, price, quantity, description, brand, size, category, image, } = this.state
+        let { name, price, quantity, description, brand, categoryId, productTypeId, } = this.state
+        let language = this.props.language
+        let arrCategories = this.state.categoriesRedux
+        let arrProductType = this.state.productTypeRedux
 
+        console.log('check state product:', this.state);
         return (
             <div className='product-redux-container'>
                 <div className='title'>Product Redux</div>
@@ -162,17 +202,10 @@ class ProductRedux extends Component {
                                 />
                             </div>
                             <div className='col-3'>
-                                <label>Giá khuyến mãi</label>
+                                <label>Giá</label>
                                 <input className='form-control' type='text'
                                     value={price}
                                     onChange={(event) => { this.onChangeInput(event, 'price') }}
-                                />
-                            </div>
-                            <div className='col-3'>
-                                <label>Giá sản phẩm</label>
-                                <input className='form-control' type='text'
-                                // value={price}
-                                // onChange={(event) => { this.onChangeInput(event, 'price') }}
                                 />
                             </div>
                             <div className='col-3'>
@@ -182,20 +215,40 @@ class ProductRedux extends Component {
                                     onChange={(event) => { this.onChangeInput(event, 'quantity') }}
                                 />
                             </div>
-
                             <div className='col-3'>
-                                <label>Kích cỡ</label>
-                                <input className='form-control' type='text'
-                                    value={size}
-                                    onChange={(event) => { this.onChangeInput(event, 'size') }}
-                                />
+                                <label>Danh mục</label>
+                                <select className='form-control'
+                                    value={categoryId}
+                                    onChange={(event) => { this.onChangeInput(event, 'categoryId') }}
+                                >
+                                    <option>Choose...</option>
+                                    {arrCategories && arrCategories.length > 0 &&
+                                        arrCategories.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item.id}>
+                                                    {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
+                                                </option>
+                                            )
+                                        })}
+                                </select>
                             </div>
                             <div className='col-3'>
                                 <label>Thể loại</label>
-                                <input className='form-control' type='text'
-                                    value={category}
-                                    onChange={(event) => { this.onChangeInput(event, 'category') }}
-                                />
+                                <select className='form-control'
+                                    value={productTypeId}
+                                    onChange={(event) => { this.onChangeInput(event, 'productTypeId') }}
+                                >
+                                    <option>Choose...</option>
+                                    {arrProductType && arrProductType.length > 0 &&
+                                        arrProductType.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item.id}>
+                                                    {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
+                                                </option>
+                                            )
+                                        })}
+
+                                </select>
                             </div>
                             <div className='col-3'>
                                 <label>Mô tả</label>
@@ -256,8 +309,10 @@ class ProductRedux extends Component {
 
 const mapStateToProps = state => {
     return {
-        // language: state.app.language,
-        listProducts: state.product.products
+        language: state.app.language,
+        listProducts: state.product.products,
+        listCategories: state.product.categories,
+        listProductType: state.product.productType
     };
 };
 
@@ -265,8 +320,9 @@ const mapDispatchToProps = dispatch => {
     return {
         createNewProduct: (data) => dispatch(actions.createNewProduct(data)),
         fetchProductRedux: () => dispatch(actions.fetchAllProductsStart()),
-        editAProductRedux: (data) => dispatch(actions.editAProduct(data))
-
+        editAProductRedux: (data) => dispatch(actions.editAProduct(data)),
+        fetchAllCategoryRedux: () => dispatch(actions.fetchAllCategoriesStart()),
+        fetchAllProductType: () => dispatch(actions.fetchAllProductType())
     };
 };
 

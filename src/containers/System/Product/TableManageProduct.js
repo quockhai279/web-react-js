@@ -40,6 +40,7 @@ class TableManageProduct extends Component {
             <table id='TableManageProduct'>
                 <tbody>
                     <tr>
+                        <th>STT</th>
                         <th>Product name</th>
                         <th>Price</th>
                         <th>Quantity</th>
@@ -50,6 +51,7 @@ class TableManageProduct extends Component {
                         arrProducts.map((item, index) => {
                             return (
                                 <tr key={index}>
+                                    <td>{index + 1}</td>
                                     <td>{item.name}</td>
                                     <td>{item.price}</td>
                                     <td>{item.quantity}</td>

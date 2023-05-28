@@ -4,6 +4,7 @@ const initialState = {
     products: [],
     listProductsHome: [],
     categories: [],
+    productType: [],
 
 }
 
@@ -42,6 +43,16 @@ const productReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_ALL_CATEGORY_FAILED:
             state.categories = []
+            return {
+                ...state
+            }
+        case actionTypes.FETCH_ALL_PRODUCT_TYPE_SUCCESS:
+            state.productType = action.productType
+            return {
+                ...state
+            }
+        case actionTypes.FETCH_ALL_PRODUCT_TYPE_FAILED:
+            state.productType = []
             return {
                 ...state
             }

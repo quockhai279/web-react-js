@@ -6,7 +6,10 @@ import {
     getAllProductsListHome,
 
     createNewCategoryService, getAllCategories, deleteProductCategoryService,
-    editProductCategoryService
+    editProductCategoryService,
+
+    createNewProductTypeService, getAllProductType, deleteProductTypeService,
+    editProductTypeService
 } from '../../services/productService'
 
 export const createNewProduct = (data) => {
@@ -123,6 +126,7 @@ export const fetchProductListHome = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllProductsListHome('40')
+            console.log('check res get product:', res);
             if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALL_LIST_PRODUCT_SUCCESS,
@@ -249,3 +253,108 @@ export const editCategory = (data) => {
     }
 }
 
+// type of product
+
+export const createNewProductType = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await createNewProductTypeService(data);
+            if (res && res.errCode === 0) {
+                toast.success("Create type of product success")
+                dispatch({
+                    type: actionTypes.CREATE_PRODUCT_TYPE_SUCCESS
+                })
+                dispatch(fetchAllProductType())
+            } else {
+                toast.error("Create type of product failed")
+                dispatch({
+                    type: actionTypes.CREATE_PRODUCT_TYPE_FAILED
+                })
+            }
+        } catch (e) {
+            toast.error("Create type of product failed")
+            console.log('Create type of product failed', e);
+            dispatch({
+                type: actionTypes.CREATE_PRODUCT_TYPE_FAILED
+            })
+        }
+    }
+}
+
+export const fetchAllProductType = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllProductType("ALL")
+            if (res && res.errCode === 0) {
+                dispatch(fetchAllProductTypeSuccess(res.productType.reverse()))
+            } else {
+                toast.error("Fetch all product type failed")
+                dispatch(fetchAllProductTypeFailed())
+            }
+        } catch (e) {
+            toast.error("Fetch all product type failed")
+            dispatch(fetchAllProductTypeFailed())
+            console.log('Fetch all product type error:', e);
+        }
+    }
+}
+
+export const fetchAllProductTypeSuccess = (data) => ({
+    type: actionTypes.FETCH_ALL_PRODUCT_TYPE_SUCCESS,
+    productType: data
+})
+
+export const fetchAllProductTypeFailed = () => ({
+    type: actionTypes.FETCH_ALL_PRODUCT_TYPE_FAILED,
+})
+
+export const deleteProductType = (productTypeId) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await deleteProductTypeService(productTypeId);
+            if (res && res.errCode === 0) {
+                toast.success("Delete product category success")
+                dispatch({
+                    type: actionTypes.DELETE_PRODUCT_TYPE_SUCCESS
+                })
+                dispatch(fetchAllProductType())
+            } else {
+                toast.error("Delete product category failed")
+                dispatch({
+                    type: actionTypes.DELETE_PRODUCT_TYPE_FAILED
+                })
+            }
+        } catch (e) {
+            console.log('Delete product category failed', e);
+            dispatch({
+                type: actionTypes.DELETE_PRODUCT_TYPE_FAILED
+            })
+        }
+    }
+}
+
+export const editProductType = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await editProductTypeService(data);
+            if (res && res.errCode === 0) {
+                toast.success("Edit product type success")
+                dispatch({
+                    type: actionTypes.EDIT_PRODUCT_TYPE_SUCCESS
+                })
+                dispatch(fetchAllProductType())
+            } else {
+                toast.error("Edit product type failed")
+                dispatch({
+                    type: actionTypes.EDIT_PRODUCT_TYPE_FAILED
+                })
+            }
+        } catch (e) {
+            toast.error("Edit product type failed")
+            console.log('Edit product type failed', e);
+            dispatch({
+                type: actionTypes.EDIT_PRODUCT_TYPE_FAILED
+            })
+        }
+    }
+}

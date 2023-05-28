@@ -51,6 +51,7 @@ export const adminMenu = [
         ]
     },
 ];
+
 export const doctorMenu = [
     {
         name: 'menu.admin.manage-user',

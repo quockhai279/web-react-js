@@ -2,7 +2,7 @@
     background-color: #f5f5f5;
 
     .product-detail {
-        padding: 30px 50px 20px 50px;
+        padding: 30px 50px 30px 50px;
 
         .product-detail-container {
             height       : 590px;
@@ -65,7 +65,32 @@
 
                 }
 
-                .product-title-brand {}
+                .product-title-brand {
+
+                    .breadcrumb-list {
+                        list-style   : none;
+                        display      : flex;
+                        align-items  : center;
+                        padding-left : 0;
+                        margin-bottom: 10px;
+
+                        .breadcrumb-item {
+                            font-size: 15px;
+
+
+                            a {
+                                text-decoration: none;
+                                color          : black;
+                                font-size      : 14px;
+                                line-height    : 23px;
+                            }
+
+                            .breadcrumb-link {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
 
                 .product-title {
                     line-height: 1.2em;

@@ -7,35 +7,34 @@ class TableProductType extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // categoriesRedux: [],
+            productTypeRedux: [],
         }
     }
 
     componentDidMount() {
-        // this.props.fetchCategoryRedux()
+        this.props.fetchAllProductTypeRedux()
     }
 
     componentDidUpdate(prevProps, preState, snapshot) {
-        // if (prevProps.listCategories !== this.props.listCategories) {
-        //     this.setState({
-        //         categoriesRedux: this.props.listCategories
-        //     })
-        // }
+        if (prevProps.listProductType !== this.props.listProductType) {
+            this.setState({
+                productTypeRedux: this.props.listProductType
+            })
+        }
     }
 
-    // handleDeleteCategory = (category) => {
-    //     this.props.deleteCategoryRedux(category.id)
-    // }
+    handleDeleteProductType = (productType) => {
+        this.props.deleteProductType(productType.id)
+    }
 
-    // handleEditCategory = (category) => {
-    //     // console.log('check props category:', category);
-    //     this.props.handleEditProductCategoryFromParentKey(category)
-    // }
+    handleEditProductType = (productType) => {
+        this.props.handleEditProductTypeFromParentKey(productType)
+    }
 
     render() {
-        // console.log('check props', this.props.listCategories);
-        // console.log('check state', this.state.categoriesRedux);
-        // let arrCategories = this.state.categoriesRedux
+        console.log('check props', this.props.listProductType);
+        console.log('check state productTypeRedux', this.state.productTypeRedux);
+        let arrProductType = this.state.productTypeRedux
         return (
             <table id='TableManageProduct'>
                 <tbody>
@@ -45,28 +44,26 @@ class TableProductType extends Component {
                         <th>Name VN</th>
                         <th>Action</th>
                     </tr>
-                    {/* {arrCategories && arrCategories.length > 0 &&
-                        arrCategories.map((item, index) => {
+                    {arrProductType && arrProductType.length > 0 &&
+                        arrProductType.map((item, index) => {
                             return (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td>{item.type}</td>
-                                    <td>{item.keyMap}</td>
                                     <td>{item.valueEn}</td>
                                     <td>{item.valueVi}</td>
                                     <td>
                                         <button
                                             className='btn-edit'
-                                            onClick={() => this.handleEditCategory(item)}
+                                            onClick={() => this.handleEditProductType(item)}
                                         ><i className='fas fa-pencil-alt'></i></button>
                                         <button
                                             className='btn-delete'
-                                            onClick={() => this.handleDeleteCategory(item)}
+                                            onClick={() => this.handleDeleteProductType(item)}
                                         ><i className='fas fa-trash'></i></button>
                                     </td>
                                 </tr>
                             )
-                        })} */}
+                        })}
                 </tbody>
             </table>
         );
@@ -75,14 +72,15 @@ class TableProductType extends Component {
 
 const mapStateToProps = state => {
     return {
-        // listCategories: state.product.categories
+        listProductType: state.product.productType,
+
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchCategoryRedux: () => dispatch(actions.fetchAllCategoriesStart()),
-        // deleteCategoryRedux: (id) => dispatch(actions.deleteCategory(id)),
+        fetchAllProductTypeRedux: () => dispatch(actions.fetchAllProductType()),
+        deleteProductType: (id) => dispatch(actions.deleteProductType(id)),
     };
 };
 

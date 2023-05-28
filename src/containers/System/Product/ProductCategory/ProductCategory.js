@@ -10,6 +10,7 @@ class ProductCategory extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            categoriesRedux: [],
 
             nameVi: '',
             nameEn: '',
@@ -21,10 +22,17 @@ class ProductCategory extends Component {
     }
 
     async componentDidMount() {
-
+        this.props.fetchCategoryRedux()
     }
 
     componentDidUpdate(prevProps, preState, snapshot) {
+        if (prevProps.listCategories !== this.props.listCategories) {
+            let arrCategories = this.props.listCategories
+            this.setState({
+                categoriesRedux: arrCategories,
+                categoryId: arrCategories && arrCategories.length > 0 ? arrCategories[0].id : ''
+            })
+        }
         if (prevProps.listCategories !== this.props.listCategories) {
             this.setState({
                 nameVi: '',
@@ -90,10 +98,9 @@ class ProductCategory extends Component {
 
     render() {
         let { nameVi, nameEn } = this.state
-
         return (
             <div className='product-redux-container'>
-                <div className='title'>Product Category</div>
+                <div className='title'>Product category manager</div>
                 <div className='product-redux-body'>
                     <div className='container'>
                         <div className='row'>
