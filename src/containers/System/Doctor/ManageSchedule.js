@@ -38,10 +38,12 @@ class ManageSchedule extends Component {
             console.log('check range time:', this.props.allScheduleTime);
             let data = this.props.allScheduleTime
             if (data && data.length > 0) {
+                //c1
                 // data.map(item => {
                 //     item.isSelected = false;
                 //     return item
                 // })
+                //c2
                 data = data.map(item => ({ ...item, isSelected: false }))
             }
             this.setState({
