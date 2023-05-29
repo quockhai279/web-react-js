@@ -31,24 +31,37 @@
         }
 
         .time-content {
-            display  : flex;
-            gap      : 15px;
-            flex-wrap: wrap;
-        }
 
-        button {
-            padding         : 5px 10px;
-            border          : none;
-            outline         : none;
-            background-color: #fff04b;
-            min-width       : 150px;
-            border-radius   : 3px;
-            color           : black;
 
-            &:hover {
-                background-color: #45c3b2;
-                font-weight     : bold;
-                color           : aliceblue;
+            .time-content-btn {
+                display  : flex;
+                gap      : 15px;
+                flex-wrap: wrap;
+
+                button {
+                    padding         : 5px 10px;
+                    border          : none;
+                    outline         : none;
+                    background-color: #fff04b;
+                    min-width       : 150px;
+                    border-radius   : 3px;
+                    color           : black;
+
+                    &:hover {
+                        background-color: #45c3b2;
+                        font-weight     : bold;
+                        color           : aliceblue;
+                    }
+                }
+
+                .no-schedule {
+                    font-style: italic;
+                    font-size : 15px;
+                }
+
+                .book-free {
+                    margin-top: 10px;
+                }
             }
         }
     }

@@ -13,6 +13,7 @@ class DetailDoctor extends Component {
         super(props)
         this.state = {
             detailDoctor: {},
+            currentDoctorId: -1,
         }
     }
 
@@ -22,7 +23,8 @@ class DetailDoctor extends Component {
             let res = await getDetailInfoDoctor(id)
             if (res && res.errCode === 0) {
                 this.setState({
-                    detailDoctor: res.data
+                    detailDoctor: res.data,
+                    currentDoctorId: id
                 })
             }
         }
