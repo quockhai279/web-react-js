@@ -77,14 +77,12 @@ class DoctorSchedule extends Component {
             let doctorId = this.props.doctorIdFromParent;
             let date = event.target.value
             let res = await getScheduleDoctorByDate(doctorId, date)
-            console.log('check res', res);
-            let allTime = [];
             if (res && res.errCode === 0) {
-                allTime = res.data
                 this.setState({
                     allAvailableTime: res.data ? res.data : []
                 })
             }
+            // console.log('check res schedule', res);
         }
     }
 
@@ -112,8 +110,10 @@ class DoctorSchedule extends Component {
                 </div>
                 <div className='all-available-time'>
                     <div className='text-calendar'>
-                        <i className="fa fa-calendar-alt"></i>
-                        <span><FormattedMessage id="patient.detail-doctor.schedule" /></span>
+                        <i className="fa fa-calendar-alt">
+
+                            <span><FormattedMessage id="patient.detail-doctor.schedule" /></span>
+                        </i>
                     </div>
                     <div className='time-content'>
                         {allAvailableTime && allAvailableTime.length > 0
@@ -142,7 +142,6 @@ class DoctorSchedule extends Component {
                                 <FormattedMessage id="patient.detail-doctor.no-schedule" />
                             </div>
                         }
-
                     </div>
                 </div>
             </div>

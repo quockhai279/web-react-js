@@ -136,9 +136,10 @@ class ManageSchedule extends Component {
             toast.success('Save info success')
         } else {
             toast.error('error save bulkScheduleDoctor')
+            console.log('res save bulkScheduleDoctor', res);
         }
-        console.log('res', res);
-        console.log('result', result);
+        // console.log('res', res);
+        // console.log('result', result);
     }
 
     render() {
