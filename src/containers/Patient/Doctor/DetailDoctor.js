@@ -8,7 +8,6 @@ import { LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
 
 class DetailDoctor extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
@@ -29,7 +28,6 @@ class DetailDoctor extends Component {
             }
         }
     }
-
 
     render() {
 

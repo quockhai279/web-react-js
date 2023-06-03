@@ -18,7 +18,29 @@
             cursor: pointer;
         }
 
-        h1,
+        .header-cart-title {
+            position: relative;
+
+            .header-cart-notice {
+                position       : absolute;
+                top            : 10px;
+                left           : 155px;
+                font-size      : 15px;
+                font-weight    : 600;
+                line-height    : 20px;
+                color          : #FFF;
+                background     : red;
+                width          : 24px;
+                height         : 24px;
+                display        : flex;
+                border-radius  : 50%;
+                align-items    : center;
+                justify-content: center;
+
+            }
+        }
+
+        .header-cart-title,
         i {
             color      : #221f20;
             font-weight: bold;

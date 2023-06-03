@@ -18,6 +18,8 @@ class CartSideBar extends Component {
 
     }
 
+
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.HomeProductList !== this.props.HomeProductList) {
             this.setState({
@@ -38,10 +40,13 @@ class CartSideBar extends Component {
     }
 
     render() {
+
         return (
             <div className={this.props.isOpen === true ? 'cart activeNavBar' : 'cart'}>
                 <div className='header-cart'>
-                    <h1>Giỏ hàng</h1>
+                    <h1 className='header-cart-title'>Giỏ hàng
+                        <span className='header-cart-notice'>3</span>
+                    </h1>
                     <i class="fa-solid fa-xmark" onClick={this.CloseNavbarCart}></i>
                 </div>
                 <CustomScrollbars style={{ height: '68vh', width: '100%' }}>

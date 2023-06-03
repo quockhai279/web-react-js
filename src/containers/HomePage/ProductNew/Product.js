@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Product.scss';
 import { FormattedMessage } from 'react-intl';
-import productImg2 from "../../../assets/imgProduct/product/nike-air-force-1-shadow-multicolor.jpeg"
 import * as actions from '../../../store/actions'
 import { withRouter } from 'react-router'
 
@@ -24,7 +23,7 @@ class Product extends Component {
     }
 
     componentDidMount() {
-        this.props.listProductHomeRedux()
+        this.props.fetchAllProductsStart()
     }
 
     handleViewProductDetail = (product) => {
@@ -33,8 +32,13 @@ class Product extends Component {
         }
     }
 
+
+
     render() {
         let { arrProduct } = this.state
+        console.log('check this.props :', this.props);
+        console.log('check this.props.addToCart :', this.state.addToCart);
+
         return (
             <section className='section-product'>
                 <div className='container'>
@@ -65,6 +69,9 @@ class Product extends Component {
                                                 <del className='old-price'>4.200.000 đ</del>
                                             </div>
                                         </div>
+                                        {/* <i className="add-to-cart fa fa-light fa-bag-shopping"
+                                            onClick={() => this.props.addToCart(item)}
+                                        ></i> */}
                                         <div className='product-label-group'>
                                             <div className='product-label'>
                                                 <span>New</span>
@@ -88,13 +95,13 @@ const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
-        HomeProductList: state.product.listProductsHome,
+        HomeProductList: state.product.products,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        listProductHomeRedux: () => dispatch(actions.fetchProductListHome())
+        fetchAllProductsStart: () => dispatch(actions.fetchAllProductsStart())
     };
 };
 

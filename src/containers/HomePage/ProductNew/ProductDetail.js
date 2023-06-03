@@ -4,6 +4,7 @@ import HomeHeader from '../../HomePage/HomeHeader';
 import HomeFooter from '../../HomePage/Section/HomeFooter';
 import productImg2 from "../../../assets/imgProduct/product/nike-air-force.jpeg"
 import productImg1 from "../../../assets/imgProduct/product/nike-air-force-1-shadow-multicolor.jpeg"
+import productImg3 from "../../../assets/imgProduct/product/f1.jpg"
 import Slider from "react-slick";
 import './ProductDetail.scss'
 import { getDetailInfoProduct } from '../../../services/productService'
@@ -15,15 +16,17 @@ class ProductDetail extends Component {
         this.state = {
             nav1: null,
             nav2: null,
-            detailProduct: {}
+            detailProduct: {},
+            isShowDetailInfo: false,
+            cartItems: [],
         }
     }
 
     async componentDidMount() {
-        // this.setState({
-        //     nav1: this.slider1,
-        //     nav2: this.slider2
-        // });
+        this.setState({
+            nav1: this.slider1,
+            nav2: this.slider2
+        });
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id
             let res = await getDetailInfoProduct(id)
@@ -38,14 +41,37 @@ class ProductDetail extends Component {
 
     returnToShop = () => {
         if (this.props.history) {
-            this.props.history.push(`/Shop`)
+            this.props.history.push(`/home`)
         }
+    }
+
+
+
+    showHideDetailInfo = (status) => {
+        this.setState({
+            isShowDetailInfo: status
+        })
+    }
+
+    addToCart = (product) => {
+        console.log('check product detail:', product);
+        // const cartItems = this.state.cartItems.slice();
+        // let alreadyInCart = false;
+        // cartItems.forEach(item => {
+        //     if (item.id === product.id) {
+        //         item.count++;
+        //         alreadyInCart = true
+        //     }
+        // })
+        // if (!alreadyInCart) {
+        //     cartItems.push({ ...product, count: 1 })
+        // }
     }
 
     render() {
         console.log('check state product detail aaaaaa: ', this.state);
         let { language } = this.props
-        let { detailProduct } = this.state
+        let { detailProduct, isShowDetailInfo } = this.state
         let nameVi = '', nameEn = '', nameTypeVi = '', nameTypeEn = '';
         if (detailProduct && detailProduct.categoryData) {
             nameVi = `${detailProduct.categoryData.valueVi}`
@@ -74,7 +100,7 @@ class ProductDetail extends Component {
                                     vertical={true}
                                 >
                                     <div className='slider-nav-1'>
-                                        <img src={productImg1} />
+                                        <img src={productImg3} />
                                     </div>
                                     <div className='slider-nav-1'>
                                         <img src={productImg1} />
@@ -106,7 +132,7 @@ class ProductDetail extends Component {
                                         <img src={productImg1} />
                                     </div>
                                     <div>
-                                        <h3>3</h3>
+                                        <img src={productImg3} />
                                     </div>
                                     <div>
                                         <h3>4</h3>
@@ -156,7 +182,7 @@ class ProductDetail extends Component {
                                         <button className='btn btn-outline-secondary p-size'>44</button>
                                     </div>
                                 </div>
-                                <div className='custom-quantity-container display-5 fw-bold my-4'>
+                                <div className='custom-quantity-container mb-4'>
                                     <button className='button-quantity'>-</button>
                                     <input className='input-quantity' type='text' value={1} />
                                     <button className='button-quantity'>+</button>
@@ -166,11 +192,38 @@ class ProductDetail extends Component {
                                 </p>
                                 <div className='button-productDetail'>
                                     <button className='btn-product btn btn-outline-dark px-5 py-3'>Mua ngay</button>
-                                    <button className='btn-product btn btn-warning px-5 py-3'>
+                                    <button
+                                        className='btn-product btn btn-warning px-5 py-3'
+                                        onClick={() => { this.addToCart(detailProduct) }}
+                                    >
                                         <i className="productDetail-icon fa-solid fa-cart-shopping"></i>
                                         <span>Them vao gio</span>
                                     </button>
                                 </div>
+
+                                {/* <div className='product-detail-tab'>
+                                    <div className='product-detail-tab-header'>
+                                        <div className='item-title'>Chi tiết sản phẩm</div>
+                                    </div>
+                                    <div className='product-detail-tab-body'>
+                                        {isShowDetailInfo === false
+                                            ?
+                                            <div className='item-content'>
+                                                asdfasdfasfasd asdfasdf fasdfadsfsdfsadfas afsadfdsfsa
+                                                <span onClick={() => this.showHideDetailInfo(true)}>
+                                                    Xem chi tiết
+                                                </span>
+                                            </div>
+                                            :
+                                            <div className='item-content'>
+                                                asdfsadfadsfa asdfsdfadsf
+                                                <span onClick={() => this.showHideDetailInfo(false)}>
+                                                    Ẩn bản giá
+                                                </span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className=''>

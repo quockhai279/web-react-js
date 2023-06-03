@@ -1,0 +1,24 @@
+.sale-container {
+    height : 500px;
+    display: flex;
+    padding: 30px 50px;
+
+    .category-product {
+        .category-heading {
+            margin-bottom: 20px;
+        }
+
+        .list-product {
+            display              : grid;
+            grid-template-columns: 25% 25% 25% 25%;
+
+            .item-container {
+                width : 100px;
+                height: 100px;
+                border: 1px solid red;
+            }
+        }
+
+
+    }
+}

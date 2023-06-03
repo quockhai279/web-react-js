@@ -13,20 +13,21 @@ class ProductHot extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            arrDoctors: [],
+            arrProductHot: [],
         }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.topDoctorsRedux !== this.props.topDoctorsRedux) {
+        if (prevProps.productHotList !== this.props.productHotList) {
             this.setState({
-                arrDoctors: this.props.topDoctorsRedux
+                arrProductHot: this.props.productHotList
             })
         }
     }
 
     componentDidMount() {
-        this.props.loadTopDoctors()
+        this.props.listProductHomeRedux()
+
     }
 
     handleViewDetailDoctor = (doctor) => {
@@ -36,10 +37,7 @@ class ProductHot extends Component {
     }
 
     render() {
-        let { arrDoctors } = this.state
-        let { language } = this.props
-        console.log('arrDoctors:', arrDoctors);
-        arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors)
+        let { arrProductHot } = this.state
         return (
             <div className='productHot-container'>
                 <div className='product-header'>
@@ -47,14 +45,12 @@ class ProductHot extends Component {
                 </div>
                 <div className='productHot-content' >
                     <Slider {...this.props.settings}>
-                        {arrDoctors && arrDoctors.length > 0
-                            && arrDoctors.map((item, index) => {
+                        {arrProductHot && arrProductHot.length > 0
+                            && arrProductHot.map((item, index) => {
                                 let imageBase64 = '';
                                 if (item.image) {
                                     imageBase64 = new Buffer(item.image, 'base64').toString('binary')
                                 }
-                                let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName} `;
-                                let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                 return (
                                     <div className='img-customize' key={index} onClick={() => this.handleViewDetailDoctor(item)}>
                                         <div
@@ -62,10 +58,17 @@ class ProductHot extends Component {
                                             style={{ backgroundImage: `url(${imageBase64})` }}
                                         ></div>
                                         <div className='list-detail'>
-                                            <a href='' className='title'>AIR FORCE 1 SHADOW MULTICOLOR</a>
+                                            <a href='' className='title'>{`${item.name}`}</a>
+                                            <div className='star'>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                            </div>
                                             <div className='price'>
-                                                <div>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
-                                                <div>cơ xương khớp</div>
+                                                {`${item.price}`} đ
+                                                <del className='old-price'>4.200.000 đ</del>
                                             </div>
                                         </div>
                                         <div className='product-label-group'>
@@ -91,13 +94,13 @@ const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
-        topDoctorsRedux: state.admin.topDoctors
+        productHotList: state.product.listProductsHot,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadTopDoctors: () => dispatch(actions.fetchTopDoctor()),
+        listProductHomeRedux: () => dispatch(actions.fetchProductListHome()),
     };
 };
 

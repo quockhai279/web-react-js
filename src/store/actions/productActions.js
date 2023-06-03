@@ -125,8 +125,7 @@ export const editProductsFailed = () => ({
 export const fetchProductListHome = () => {
     return async (dispatch, getState) => {
         try {
-            let res = await getAllProductsListHome('40')
-            console.log('check res get product:', res);
+            let res = await getAllProductsListHome('10')
             if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALL_LIST_PRODUCT_SUCCESS,
@@ -355,6 +354,58 @@ export const editProductType = (data) => {
             dispatch({
                 type: actionTypes.EDIT_PRODUCT_TYPE_FAILED
             })
+        }
+    }
+}
+
+export const buyProduct = (product) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllProducts("ALL")
+            if (res && res.errCode === 0) {
+                toast.success("Buy product success")
+                dispatch({
+                    type: actionTypes.BUY_PRODUCT_SUCCESS,
+                    payload: product
+                })
+            } else {
+                toast.error("BUY PRODUCT FAILED")
+                dispatch({
+                    type: actionTypes.BUY_PRODUCT_FAILED,
+                })
+            }
+        } catch (e) {
+            toast.error("BUY PRODUCT FAILED!")
+            dispatch({
+                type: actionTypes.BUY_PRODUCT_FAILED,
+            })
+            console.log('BUY PRODUCT FAILED:', e);
+        }
+    }
+}
+
+export const deleteProduct = (product) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllProducts("ALL")
+            if (res && res.errCode === 0) {
+                toast.success("Buy product success")
+                dispatch({
+                    type: actionTypes.DELETE_PRODUCT_SUCCESS,
+                    payload: product
+                })
+            } else {
+                toast.error("BUY PRODUCT FAILED")
+                dispatch({
+                    type: actionTypes.DELETE_PRODUCT_FAILED,
+                })
+            }
+        } catch (e) {
+            toast.error("DELETE PRODUCT FAILED!")
+            dispatch({
+                type: actionTypes.DELETE_PRODUCT_FAILED,
+            })
+            console.log('DELETE PRODUCT FAILED:', e);
         }
     }
 }

@@ -18,13 +18,15 @@ class HomeHeader extends Component {
         }
     }
 
+
+
     changeLanguage = (language) => {
         this.props.changeLanguageAppRedux(language)
     }
 
     returnToShop = () => {
         if (this.props.history) {
-            this.props.history.push(`/Shop`)
+            this.props.history.push(`/Home`)
         }
     }
 
@@ -44,6 +46,12 @@ class HomeHeader extends Component {
         this.setState({
             OpenViewNavbarCart: !this.state.OpenViewNavbarCart
         })
+    }
+
+    returnToSale = () => {
+        if (this.props.history) {
+            this.props.history.push(`/Sale`)
+        }
     }
 
     render() {
@@ -79,7 +87,7 @@ class HomeHeader extends Component {
                             <ul id='navbar' className='header-navbar'>
                                 <li><a href=''>Home</a></li>
                                 <li><a className='active' href='' onClick={() => this.returnToShop()}>Shop</a></li>
-                                <li><a href=''>Sale</a></li>
+                                <li><a href='' onClick={() => this.returnToSale()}>Sale</a></li>
                                 <li><a href=''>Blog</a></li>
                                 <li><a href='' onClick={() => this.returnToContact()}>Contact</a></li>
                             </ul>

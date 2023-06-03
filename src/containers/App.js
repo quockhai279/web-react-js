@@ -15,9 +15,9 @@ import CustomScrollbars from "../components/CustomScrollbars"
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
 import ProductDetail from './HomePage/ProductNew/ProductDetail';
 import Doctor from '../routes/Doctor';
-
 import Contact from './Customer/Contact';
 import Cart from './Customer/Cart';
+import Sale from './Customer/Sale';
 
 
 
@@ -54,8 +54,8 @@ class App extends Component {
                                     <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                                     <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
 
-                                    {/* <Route path={path.HOMEPAGE} component={HomePage} /> */}
-                                    <Route path={path.SHOPPAGE} component={HomePage} />
+                                    <Route path={path.HOMEPAGE} component={HomePage} />
+                                    {/* <Route path={path.SHOPPAGE} component={HomePage} /> */}
                                     <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
                                     <Route path={path.DETAIL_PRODUCT} component={ProductDetail} />
 
@@ -63,6 +63,7 @@ class App extends Component {
 
                                     <Route path={path.CONTACT} component={Contact} />
                                     <Route path={path.CART} component={Cart} />
+                                    <Route path={path.SALE} component={Sale} />
 
 
                                 </Switch>

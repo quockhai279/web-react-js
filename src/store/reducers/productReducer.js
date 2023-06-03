@@ -2,7 +2,7 @@ import actionTypes from '../actions/actionTypes';
 
 const initialState = {
     products: [],
-    listProductsHome: [],
+    listProductsHot: [],
     categories: [],
     productType: [],
 
@@ -27,12 +27,12 @@ const productReducer = (state = initialState, action) => {
                 ...state
             }
         case actionTypes.FETCH_ALL_LIST_PRODUCT_SUCCESS:
-            state.listProductsHome = action.dataProduct
+            state.listProductsHot = action.dataProduct
             return {
                 ...state
             }
         case actionTypes.FETCH_ALL_LIST_PRODUCT_FAILED:
-            state.dataProduct = []
+            state.listProductsHot = []
             return {
                 ...state
             }
@@ -56,7 +56,6 @@ const productReducer = (state = initialState, action) => {
             return {
                 ...state
             }
-
 
         default:
             return state;

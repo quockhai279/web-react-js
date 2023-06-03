@@ -7,6 +7,7 @@ import appReducer from "./appReducer";
 import userReducer from "./userReducer";
 import adminReducer from './adminReducer';
 import productReducer from './productReducer';
+import cartReducer from './cartReducer';
 
 const persistCommonConfig = {
     storage: storage,
@@ -30,5 +31,7 @@ export default (history) => combineReducers({
     user: persistReducer(userPersistConfig, userReducer),
     app: persistReducer(appPersistConfig, appReducer),
     admin: adminReducer,
-    product: productReducer
+    product: productReducer,
+    cart: cartReducer
+
 })

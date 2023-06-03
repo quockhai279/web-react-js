@@ -54,7 +54,7 @@
                     margin-bottom: 0;
                     position     : relative;
                     min-height   : 60px;
-                    padding      : 10px 10px;
+                    padding      : 10px 12px;
                     text-align   : left;
 
                     .title {
@@ -82,6 +82,13 @@
 
                 }
 
+                .add-to-cart {
+                    position : absolute;
+                    right    : 12px;
+                    bottom   : 10px;
+                    font-size: 25px;
+                }
+
                 .price {
                     font-weight: 700;
                     display    : block;
@@ -98,6 +105,14 @@
 
                 .star i {
                     color: #f0cd1d;
+                }
+
+                .list-cart {
+                    display: flex;
+
+                    i {
+                        font-size: 30px;
+                    }
                 }
 
                 .img-productNew {
