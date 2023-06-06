@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './CartSideBar.scss';
-import CustomScrollbars from "../../components/CustomScrollbars"
-import logoProduct from "../../assets/imgProduct/product/SNEAKER-AIR-FORCE.jpg"
+import CustomScrollbars from "../../../components/CustomScrollbars"
+import logoProduct from "../../../assets/imgProduct/product/SNEAKER-AIR-FORCE.jpg"
 import { withRouter } from 'react-router'
 
 

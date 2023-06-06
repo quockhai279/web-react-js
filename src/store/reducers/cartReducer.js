@@ -1,9 +1,8 @@
 import actionTypes from '../actions/actionTypes';
+import { toast } from 'react-toastify';
 
 const initialState = {
-
     cartArr: [],
-
 }
 
 const cartReducer = (state = initialState, action) => {

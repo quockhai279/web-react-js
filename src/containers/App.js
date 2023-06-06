@@ -13,13 +13,12 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import HomePage from './HomePage/HomePage';
 import CustomScrollbars from "../components/CustomScrollbars"
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
-import ProductDetail from './HomePage/ProductNew/ProductDetail';
+import ProductDetail from './HomePage/Product/ProductDetail';
 import Doctor from '../routes/Doctor';
 import Contact from './Customer/Contact';
-import Cart from './Customer/Cart';
+import Cart from './HomePage/Cart/Cart';
+import Cartt from './HomePage/Cart/Cartt';
 import Sale from './Customer/Sale';
-
-
 
 class App extends Component {
 
@@ -63,6 +62,7 @@ class App extends Component {
 
                                     <Route path={path.CONTACT} component={Contact} />
                                     <Route path={path.CART} component={Cart} />
+                                    {/* <Route path={path.CART} component={Cartt} /> */}
                                     <Route path={path.SALE} component={Sale} />
 
 

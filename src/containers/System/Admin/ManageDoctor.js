@@ -43,6 +43,7 @@ class ManageDoctor extends Component {
                 result.push(object)
             })
         }
+        console.log('result:', result);
         return result
     }
 

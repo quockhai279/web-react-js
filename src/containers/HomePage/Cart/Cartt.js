@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import HomeHeader from '../HomePage/HomeHeader';
-import HomeFooter from '../HomePage/Section/HomeFooter';
-import HightLight from '../Customer/HightLight';
+import HomeHeader from '../HomeHeader';
+import HomeFooter from '../Section/HomeFooter';
+import HightLight from '../../Customer/HightLight';
 import './Cart.scss'
-import logo from '../../assets/imgProduct/product/SNEAKER-AIR-FORCE.jpg'
-import * as actions from '../../store/actions'
+import logo from '../../../assets/imgProduct/product/SNEAKER-AIR-FORCE.jpg'
+import * as actions from '../../../store/actions'
 
-function Cart(props) {
+function Cartt(props) {
 
-    // render() {
     return (
         <>
             <HomeHeader
@@ -32,16 +31,13 @@ function Cart(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {this.props.cart.map)=>{
-
-                                }} */}
                                 <tr>
                                     <td><i className="fa-regular fa-circle-xmark"></i></td>
                                     <td>
                                         <img src={logo} className='img-product-cart' />
                                     </td>
                                     <td className='title-product-cart'>Sneaker air force</td>
-                                    <td>2.800.000 đ</td>
+                                    <td>2.800.0000đ</td>
                                     <td>
                                         <input type='number' value={1} />
                                     </td>
@@ -82,7 +78,6 @@ function Cart(props) {
             <HomeFooter />
         </>
     );
-    // }
 }
 
 const mapStateToProps = state => {
@@ -98,4 +93,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cartt);

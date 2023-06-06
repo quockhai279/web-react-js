@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import HomeHeader from '../../HomePage/HomeHeader';
-import HomeFooter from '../../HomePage/Section/HomeFooter';
+import HomeHeader from '../HomeHeader';
+import HomeFooter from '../Section/HomeFooter';
 import productImg2 from "../../../assets/imgProduct/product/nike-air-force.jpeg"
 import productImg1 from "../../../assets/imgProduct/product/nike-air-force-1-shadow-multicolor.jpeg"
 import productImg3 from "../../../assets/imgProduct/product/f1.jpg"
@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import './ProductDetail.scss'
 import { getDetailInfoProduct } from '../../../services/productService'
 import { LANGUAGES } from '../../../utils';
+import * as actions from '../../../store/actions'
 class ProductDetail extends Component {
 
     constructor(props) {
@@ -55,6 +56,7 @@ class ProductDetail extends Component {
 
     addToCart = (product) => {
         console.log('check product detail:', product);
+        this.props.addToCart()
         // const cartItems = this.state.cartItems.slice();
         // let alreadyInCart = false;
         // cartItems.forEach(item => {
@@ -70,6 +72,7 @@ class ProductDetail extends Component {
 
     render() {
         console.log('check state product detail aaaaaa: ', this.state);
+        console.log('check props product detail aaaaaa: ', this.props);
         let { language } = this.props
         let { detailProduct, isShowDetailInfo } = this.state
         let nameVi = '', nameEn = '', nameTypeVi = '', nameTypeEn = '';
@@ -195,6 +198,7 @@ class ProductDetail extends Component {
                                     <button
                                         className='btn-product btn btn-warning px-5 py-3'
                                         onClick={() => { this.addToCart(detailProduct) }}
+                                    // onClick={() => this.props.buyProduct(detailProduct)}
                                     >
                                         <i className="productDetail-icon fa-solid fa-cart-shopping"></i>
                                         <span>Them vao gio</span>
@@ -254,6 +258,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        addToCart: (product) => dispatch(actions.addToCart(product)),
     };
 };
 

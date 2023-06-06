@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HomeHeader from './HomeHeader';
-import Product from './ProductNew/Product';
+import Product from './Product/Product';
 import ProductHot from './Section/ProductHot';
 import PromotionalProducts from './Section/PromotionalProducts'
 import HandBook from './Section/HandBook'
@@ -52,7 +52,6 @@ class HomePage extends Component {
         return (
             <div>
                 <HomeHeader isShowBanner={true} />
-
                 <Product />
                 <ProductHot
                     settings={settings}
@@ -63,7 +62,6 @@ class HomePage extends Component {
                 <HandBook />
                 <About />
                 <HomeFooter />
-
             </div >
         );
     }

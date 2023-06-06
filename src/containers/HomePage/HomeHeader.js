@@ -7,7 +7,7 @@ import { changeLanguageApp } from '../../store/actions'
 import { withRouter } from 'react-router'
 import logo from "../../assets/logo.png"
 import { BsCart3 } from "react-icons/bs";
-import CartSideBar from '../Customer/CartSideBar';
+import CartSideBar from '../HomePage/Cart/CartSideBar';
 
 
 class HomeHeader extends Component {
@@ -146,8 +146,6 @@ class HomeHeader extends Component {
                         </div>
                     </section>
                 }
-
-
             </React.Fragment >
         );
     }
