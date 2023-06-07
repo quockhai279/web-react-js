@@ -47,7 +47,7 @@ class CartSideBar extends Component {
                     <h1 className='header-cart-title'>Giỏ hàng
                         <span className='header-cart-notice'>3</span>
                     </h1>
-                    <i class="fa-solid fa-xmark" onClick={this.CloseNavbarCart}></i>
+                    <i className="fa-solid fa-xmark" onClick={this.CloseNavbarCart}></i>
                 </div>
                 <CustomScrollbars style={{ height: '68vh', width: '100%' }}>
                     <div className='center-cart'>
