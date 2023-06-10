@@ -5,10 +5,11 @@ import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../utils'
 import { changeLanguageApp } from '../../store/actions'
 import { withRouter } from 'react-router'
-import logo from "../../assets/logo.png"
+import logo from "../../assets/imgProduct/logo/logo.png"
 import { BsCart3 } from "react-icons/bs";
 import CartSideBar from '../HomePage/Cart/CartSideBar';
-
+import { toast } from 'react-toastify';
+import { Link, NavLink } from "react-router-dom";
 
 class HomeHeader extends Component {
     constructor(props) {
@@ -30,11 +31,6 @@ class HomeHeader extends Component {
         }
     }
 
-    returnToContact = () => {
-        if (this.props.history) {
-            this.props.history.push(`/Contact`)
-        }
-    }
 
     ShowNavBarCart = () => {
         this.setState({
@@ -48,9 +44,18 @@ class HomeHeader extends Component {
         })
     }
 
-    returnToSale = () => {
-        if (this.props.history) {
-            this.props.history.push(`/Sale`)
+    // buyProduct = (item) => {
+    //     console.log('check product detail:', item);
+    //     if (item) {
+    //         // import { toast } from 'react-toastify';
+    //         toast.success('Đã thêm vào giỏ hàng')
+    //     }
+    // }
+
+    addToCart = (product) => {
+        console.log('check product detail:', product);
+        if (product) {
+            toast.success('Đã thêm vào giỏ hàng')
         }
     }
 
@@ -85,11 +90,11 @@ class HomeHeader extends Component {
                         </div>
                         <div className='navbar-bottom-center'>
                             <ul id='navbar' className='header-navbar'>
-                                <li><a href=''>Home</a></li>
-                                <li><a className='active' href='' onClick={() => this.returnToShop()}>Shop</a></li>
-                                <li><a href='' onClick={() => this.returnToSale()}>Sale</a></li>
-                                <li><a href=''>Blog</a></li>
-                                <li><a href='' onClick={() => this.returnToContact()}>Contact</a></li>
+                                {/* <li><NavLink to=''>Home</NavLink></li> */}
+                                <li><NavLink to='/Home'>Shop</NavLink></li>
+                                <li><NavLink to='/Sale'>Sale</NavLink></li>
+                                {/* <li><NavLink to=''>Blog</NavLink></li> */}
+                                <li><NavLink to='/Contact'>Contact</NavLink></li>
                             </ul>
                         </div>
                         <div className='navbar-bottom-right'>

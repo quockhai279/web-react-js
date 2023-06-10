@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import logo from '../../../assets/logo.png'
+import logo from '../../../assets/imgProduct/logo/logo.png'
 import logoApp from '../../../assets/imgProduct/pay/app.jpg'
 import logoPlay from '../../../assets/imgProduct/pay/play.jpg'
 import logoPay from '../../../assets/imgProduct/pay/pay.png'

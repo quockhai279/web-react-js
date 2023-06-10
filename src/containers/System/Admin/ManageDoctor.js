@@ -21,6 +21,7 @@ class ManageDoctor extends Component {
             contentHTML: '',
             selectedDoctor: '',
             description: '',
+
             listDoctors: [],
             hasOldData: false,
 
@@ -32,8 +33,7 @@ class ManageDoctor extends Component {
             selectedProvince: '',
             nameClinic: '',
             addressClinic: '',
-            note: ''
-
+            note: '',
         }
     }
 
@@ -167,10 +167,11 @@ class ManageDoctor extends Component {
         let stateName = name.name
         let stateCopy = { ...this.state }
         stateCopy[stateName] = selectedDoctor
+        console.log('stateCopy[stateName] ::::', stateCopy[stateName]);
         this.setState({
             ...stateCopy
         })
-        // console.log('selectedDoctor vs name:', selectedDoctor, stateName);
+        console.log('selectedDoctor vs name:', selectedDoctor, stateName);
     }
 
     handleOnChangeText = (event, id) => {
@@ -180,9 +181,10 @@ class ManageDoctor extends Component {
             ...stateCopy
         })
     }
+
     render() {
         let { hasOldData } = this.state
-        console.log('check render state:', this.state);
+        // console.log('check render state:', this.state);
         return (
             <div className='manage-doctor-container'>
                 <div className='manage-doctor-title'>

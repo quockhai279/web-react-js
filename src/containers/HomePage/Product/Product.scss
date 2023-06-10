@@ -82,12 +82,12 @@
 
                 }
 
-                .add-to-cart {
-                    position : absolute;
-                    right    : 12px;
-                    bottom   : 10px;
-                    font-size: 25px;
-                }
+                // .add-to-cart {
+                //     position : absolute;
+                //     right    : 12px;
+                //     bottom   : 10px;
+                //     font-size: 25px;
+                // }
 
                 .price {
                     font-weight: 700;
@@ -182,6 +182,13 @@
                         }
                     }
                 }
+            }
+
+            .add-to-cart {
+                // position : absolute;
+                // right    : 0px;
+                // bottom   : 10px;
+                font-size: 30px;
             }
 
             .item-container:hover {

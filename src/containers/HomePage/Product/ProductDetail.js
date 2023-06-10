@@ -10,6 +10,8 @@ import './ProductDetail.scss'
 import { getDetailInfoProduct } from '../../../services/productService'
 import { LANGUAGES } from '../../../utils';
 import * as actions from '../../../store/actions'
+import { toast } from 'react-toastify';
+
 class ProductDetail extends Component {
 
     constructor(props) {
@@ -56,7 +58,10 @@ class ProductDetail extends Component {
 
     addToCart = (product) => {
         console.log('check product detail:', product);
-        this.props.addToCart()
+        if (product) {
+            toast.success('Đã thêm vào giỏ hàng')
+        }
+        // this.props.addToCart()
         // const cartItems = this.state.cartItems.slice();
         // let alreadyInCart = false;
         // cartItems.forEach(item => {
@@ -197,8 +202,7 @@ class ProductDetail extends Component {
                                     <button className='btn-product btn btn-outline-dark px-5 py-3'>Mua ngay</button>
                                     <button
                                         className='btn-product btn btn-warning px-5 py-3'
-                                        onClick={() => { this.addToCart(detailProduct) }}
-                                    // onClick={() => this.props.buyProduct(detailProduct)}
+                                        onClick={() => this.addToCart(detailProduct)}
                                     >
                                         <i className="productDetail-icon fa-solid fa-cart-shopping"></i>
                                         <span>Them vao gio</span>

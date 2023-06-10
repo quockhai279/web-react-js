@@ -32,6 +32,10 @@ class Product extends Component {
         }
     }
 
+    addProduct = (product) => {
+
+    }
+
 
 
     render() {
@@ -53,34 +57,36 @@ class Product extends Component {
                                     imageBase64 = new Buffer(item.image, 'base64').toString('binary')
                                 }
                                 return (
-                                    <div className='item-container' key={index} onClick={() => this.handleViewProductDetail(item)}>
-                                        <div className='img-productNew' style={{ backgroundImage: `url(${imageBase64})` }}></div>
-                                        <div className='list-detail'>
-                                            <a href='' className='title'>{`${item.name}`}</a>
-                                            <div className='star'>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
+                                    <div className='all-container-product'>
+                                        <div className='item-container' key={index} onClick={() => this.handleViewProductDetail(item)}>
+                                            <div className='img-productNew' style={{ backgroundImage: `url(${imageBase64})` }}></div>
+                                            <div className='list-detail'>
+                                                <a href='' className='title'>{`${item.name}`}</a>
+                                                <div className='star'>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                </div>
+                                                <div className='price'>
+                                                    {`${item.price}`} đ
+                                                    <del className='old-price'>4.200.000 đ</del>
+                                                </div>
                                             </div>
-                                            <div className='price'>
-                                                {`${item.price}`} đ
-                                                <del className='old-price'>4.200.000 đ</del>
+
+                                            <div className='product-label-group'>
+                                                <div className='product-label'>
+                                                    <span>New</span>
+                                                </div>
+                                                <div className='product-label-sale'>
+                                                    <span>-7%</span>
+                                                </div>
                                             </div>
                                         </div>
                                         {/* <i className="add-to-cart fa fa-light fa-bag-shopping"
-                                            onClick={() => this.addToCart(item)}
-                                        // onClick={() => this.props.buyProduct(item)}
+                                            onClick={() => this.addProduct(item)}
                                         ></i> */}
-                                        <div className='product-label-group'>
-                                            <div className='product-label'>
-                                                <span>New</span>
-                                            </div>
-                                            <div className='product-label-sale'>
-                                                <span>-7%</span>
-                                            </div>
-                                        </div>
                                     </div>
                                 )
                             })

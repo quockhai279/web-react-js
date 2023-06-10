@@ -4,13 +4,14 @@ import './CartSideBar.scss';
 import CustomScrollbars from "../../../components/CustomScrollbars"
 import logoProduct from "../../../assets/imgProduct/product/SNEAKER-AIR-FORCE.jpg"
 import { withRouter } from 'react-router'
-
+import { toast } from 'react-toastify';
+import ProductDetail from '../Product/ProductDetail';
 
 class CartSideBar extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
+
         }
     }
 
@@ -18,7 +19,12 @@ class CartSideBar extends Component {
 
     }
 
-
+    addToCart = (product) => {
+        console.log('check product detail:', product);
+        if (product) {
+            toast.success('Đã thêm vào giỏ hàng')
+        }
+    }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.HomeProductList !== this.props.HomeProductList) {
