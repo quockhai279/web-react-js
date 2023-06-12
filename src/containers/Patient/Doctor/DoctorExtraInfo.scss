@@ -22,9 +22,16 @@
     }
 
     .content-down {
-        span {
-            cursor: pointer;
-            color : rgb(38, 160, 231);
+        .short-info {
+            span {
+                cursor: pointer;
+                color : rgb(38, 160, 231);
+            }
+
+            .currency {
+                margin: 0 5px;
+                color : #333;
+            }
         }
 
         .detail-info-title-price {

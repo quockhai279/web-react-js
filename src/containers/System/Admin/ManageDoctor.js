@@ -93,7 +93,7 @@ class ManageDoctor extends Component {
             let dataSelectedPayment = this.buildDataInputSelect(resPayment, 'PAYMENT')
             let dataSelectedProvince = this.buildDataInputSelect(resProvince, 'PROVINCE')
             // console.log('allRequiredDoctorInfo props:', this.props.allRequiredDoctorInfo);
-            console.log('allRequiredDoctorInfo data:', dataSelectedPrice, dataSelectedPayment, dataSelectedProvince);
+            // console.log('allRequiredDoctorInfo data:', dataSelectedPrice, dataSelectedPayment, dataSelectedProvince);
             this.setState({
                 listPrice: dataSelectedPrice,
                 listPayment: dataSelectedPayment,
