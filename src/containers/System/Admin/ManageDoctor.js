@@ -12,7 +12,6 @@ import { getDetailInfoDoctor } from '../../../services/userService';
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-
 class ManageDoctor extends Component {
     constructor(props) {
         super(props);
@@ -143,21 +142,55 @@ class ManageDoctor extends Component {
 
     handleChangeSelect = async (selectedDoctor) => {
         this.setState({ selectedDoctor });
+        let { listPayment, listPrice, listProvince } = this.state
         let res = await getDetailInfoDoctor(selectedDoctor.value)
         if (res && res.errCode === 0 && res.data && res.data.Markdown) {
             let markdown = res.data.Markdown
+            let addressClinic = '', paymentId = '', note = '',
+                priceId = '', nameClinic = '', provinceId = '',
+                selectedPayment = '', selectedPrice = '', selectedProvince = '';
+            if (res.data.DoctorInfo) {
+                addressClinic = res.data.DoctorInfo.addressClinic
+                nameClinic = res.data.DoctorInfo.nameClinic
+                note = res.data.DoctorInfo.note
+
+                paymentId = res.data.DoctorInfo.paymentId
+                priceId = res.data.DoctorInfo.priceId
+                provinceId = res.data.DoctorInfo.provinceId
+
+                selectedPayment = listPayment.find(item => {
+                    return item && item.value === paymentId
+                });
+                selectedPrice = listPrice.find(item => {
+                    return item && item.value === priceId
+                });
+                selectedProvince = listProvince.find(item => {
+                    return item && item.value === provinceId
+                });
+                // console.log('check find array :::::::', findItem, listPayment, paymentId);
+                // console.log('check find array :::::::', selectedProvince, selectedPrice, selectedPayment);
+            }
             this.setState({
                 contentHTML: markdown.contentHTML,
                 contentMarkdown: markdown.contentMarkdown,
                 description: markdown.description,
-                hasOldData: true
+                hasOldData: true,
+                addressClinic: addressClinic,
+                nameClinic: nameClinic,
+                note: note,
+                selectedPayment: selectedPayment,
+                selectedPrice: selectedPrice,
+                selectedProvince: selectedProvince,
             })
         } else {
             this.setState({
                 contentHTML: '',
                 contentMarkdown: '',
                 description: '',
-                hasOldData: false
+                hasOldData: false,
+                addressClinic: '',
+                nameClinic: '',
+                note: ''
             })
         }
         console.log('check res :', res);
@@ -167,11 +200,11 @@ class ManageDoctor extends Component {
         let stateName = name.name
         let stateCopy = { ...this.state }
         stateCopy[stateName] = selectedDoctor
-        console.log('stateCopy[stateName] ::::', stateCopy[stateName]);
+        // console.log('stateCopy[stateName] ::::', stateCopy[stateName]);
         this.setState({
             ...stateCopy
         })
-        console.log('selectedDoctor vs name:', selectedDoctor, stateName);
+        // console.log('selectedDoctor vs name:', selectedDoctor, stateName);
     }
 
     handleOnChangeText = (event, id) => {
@@ -184,7 +217,7 @@ class ManageDoctor extends Component {
 
     render() {
         let { hasOldData } = this.state
-        // console.log('check render state:', this.state);
+        // console.log('check render state::::::::::s', this.state);
         return (
             <div className='manage-doctor-container'>
                 <div className='manage-doctor-title'>
@@ -218,7 +251,6 @@ class ManageDoctor extends Component {
                             placeholder={<FormattedMessage id='admin.manage-doctor.price' />}
                             name="selectedPrice"
                         />
-
                     </div>
                     <div className='col-3 form-group'>
                         <label><FormattedMessage id='admin.manage-doctor.payment' /></label>
@@ -265,7 +297,7 @@ class ManageDoctor extends Component {
                 <button
                     onClick={() => this.handleSaveContentMarkdown()}
                     className={hasOldData === true ? 'save-content-doctor mb-3' : 'create-content-doctor mb-3'}>
-                    {hasOldData === true ? <span><FormattedMessage id='admin.manage-doctor.add' /></span> : <span><FormattedMessage id='admin.manage-doctor.save' /></span>}
+                    {hasOldData === true ? <span><FormattedMessage id='admin.manage-doctor.save' /></span> : <span><FormattedMessage id='admin.manage-doctor.add' /></span>}
                 </button>
                 <div className='manage-doctor-editor'>
                     <MdEditor
@@ -275,7 +307,6 @@ class ManageDoctor extends Component {
                         value={this.state.contentMarkdown}
                     />
                 </div>
-
             </div >
         );
     }
