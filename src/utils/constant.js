@@ -10,7 +10,8 @@ export const path = {
 
     CONTACT: '/Contact',
     CART: '/CART',
-    SALE: '/SALE'
+    SALE: '/SALE',
+    PAGE: '/PAGE'
 
 };
 

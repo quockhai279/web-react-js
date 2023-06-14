@@ -19,6 +19,7 @@ import Contact from './Customer/Contact';
 import Cart from './HomePage/Cart/Cart';
 import Cartt from './HomePage/Cart/Cartt';
 import Sale from './Customer/Sale';
+import Page from './Customer/Page';
 
 class App extends Component {
 
@@ -65,6 +66,8 @@ class App extends Component {
                                     <Route path={path.CART} component={Cart} />
                                     {/* <Route path={path.CART} component={Cartt} /> */}
                                     <Route path={path.SALE} component={Sale} />
+
+                                    <Route path={path.PAGE} component={Page} />
 
 
                                 </Switch>

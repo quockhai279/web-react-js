@@ -49,7 +49,6 @@ class DetailDoctor extends Component {
                     <div className='intro-doctor'>
                         <div className='content-left'
                             style={{ backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image : ''})` }}>
-
                         </div>
                         <div className='content-right'>
                             <div className='up'>
