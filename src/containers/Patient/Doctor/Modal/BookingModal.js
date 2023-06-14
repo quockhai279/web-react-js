@@ -48,7 +48,9 @@ class BookingModal extends Component {
                     <div className='booking-modal-body'>
                         <div className='doctor-info'>
                             <ProfileDoctor
+                                isShowDescriptionDoctor={false}
                                 doctorId={doctorId}
+                                dataTime={dataTime}
                             />
                         </div>
                         <div className='row'>
@@ -56,7 +58,7 @@ class BookingModal extends Component {
                                 <label>Họ tên</label>
                                 <input className='form-control' />
                             </div>
-                            <div className='col-3form-group'>
+                            <div className='col-3 form-group'>
                                 <label>Số điện thoại</label>
                                 <input className='form-control' />
                             </div>
@@ -68,7 +70,11 @@ class BookingModal extends Component {
                                 <label>Địa chỉ liên hệ</label>
                                 <input className='form-control' />
                             </div>
-                            <div className='col-6 form-group'>
+                            <div className='col-3 form-group'>
+                                <label>Địa chỉ Email</label>
+                                <input className='form-control' />
+                            </div>
+                            <div className='col-3 form-group'>
                                 <label>Đặt cho ai</label>
                                 <input className='form-control' />
                             </div>
