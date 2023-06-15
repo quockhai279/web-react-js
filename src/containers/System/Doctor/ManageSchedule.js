@@ -35,7 +35,7 @@ class ManageSchedule extends Component {
             })
         }
         if (prevProps.allScheduleTime !== this.props.allScheduleTime) {
-            console.log('check range time:', this.props.allScheduleTime);
+            // console.log('check range time:', this.props.allScheduleTime);
             let data = this.props.allScheduleTime
             if (data && data.length > 0) {
                 //c1
@@ -144,7 +144,7 @@ class ManageSchedule extends Component {
 
     render() {
         let { rangeTime } = this.state
-        console.log('rangeTime:', rangeTime);
+        // console.log('rangeTime:', rangeTime);
         let { language } = this.props
         let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
         return (

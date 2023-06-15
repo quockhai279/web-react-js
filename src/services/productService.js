@@ -6,7 +6,7 @@ const getAllProducts = (inputId) => {
 }
 
 const createNewProductService = (data) => {
-    console.log('check data axios,', data);
+    // console.log('check data axios,', data);
     return axios.post('/api/create-new-product', data)
 }
 

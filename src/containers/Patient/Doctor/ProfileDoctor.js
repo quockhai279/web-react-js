@@ -43,13 +43,13 @@ class ProfileDoctor extends Component {
         }
     }
 
-    capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1)
-    }
+    // capitalizeFirstLetter(string) {
+    //     return string.charAt(0).toUpperCase() + string.slice(1)
+    // }
 
     renderTimeBooking = (dataTime) => {
         let { language } = this.props
-        console.log('dataTimedataTimedataTimedataTime: ', dataTime);
+        // console.log('dataTimedataTimedataTimedataTime: ', dataTime);
         if (dataTime && !_.isEmpty(dataTime)) {
             let time = language === LANGUAGES.VI ? dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn;
 
@@ -61,7 +61,7 @@ class ProfileDoctor extends Component {
             return (
                 <>
                     <div>{time} {date}</div>
-                    <div>Miễn phí đặt lịch</div>
+                    <div><FormattedMessage id="patient.booking-modal.priceBooking" /></div>
                 </>
             )
         }
@@ -77,7 +77,7 @@ class ProfileDoctor extends Component {
             nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.firstName} ${dataProfile.lastName}`;
         }
         // console.log('check state profile doctor :::::::', this.state);
-        console.log('check state dataProfile dataProfile :::::::', dataProfile);
+        // console.log('check state dataProfile dataProfile :::::::', dataProfile);
         return (
             <div className='profile-doctor-container'>
                 <div className='intro-doctor'>
@@ -108,7 +108,7 @@ class ProfileDoctor extends Component {
                     </div>
                 </div>
                 <div className='price'>
-                    Giá khám: {dataProfile && dataProfile.DoctorInfo && language === LANGUAGES.VI
+                    <FormattedMessage id="patient.extra-info-doctor.price" />: {dataProfile && dataProfile.DoctorInfo && language === LANGUAGES.VI
                         &&
                         <NumberFormat
                             className='currency'

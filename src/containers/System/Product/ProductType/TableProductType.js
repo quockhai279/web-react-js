@@ -32,8 +32,8 @@ class TableProductType extends Component {
     }
 
     render() {
-        console.log('check props', this.props.listProductType);
-        console.log('check state productTypeRedux', this.state.productTypeRedux);
+        // console.log('check props', this.props.listProductType);
+        // console.log('check state productTypeRedux', this.state.productTypeRedux);
         let arrProductType = this.state.productTypeRedux
         return (
             <table id='TableManageProduct'>
