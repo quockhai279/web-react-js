@@ -20,6 +20,16 @@ export const adminMenu = [
             },
         ]
     },
+    {// quản lý chuyên khoa
+        name: 'menu.admin.specialty',
+        menus: [
+            {
+                name: 'menu.admin.manage-specialty', link: '/system/manage-specialty'
+            },
+        ]
+    },
+
+    ///////////////////////////
     {// quản lý sản phẩm
         name: 'menu.admin.product',
         menus: [

@@ -8,6 +8,7 @@ import ProductCategory from '../containers/System/Product/ProductCategory/Produc
 import ProductType from '../containers/System/Product/ProductType/ProductType'
 import ManageDoctor from '../containers/System/Admin/ManageDoctor';
 import Header from '../containers/Header/Header';
+import ManageSpecialty from '../containers/System/Specialty/ManageSpecialty';
 
 class System extends Component {
     render() {
@@ -21,6 +22,8 @@ class System extends Component {
                             <Route path="/system/user-manage" component={UserManage} />
                             <Route path="/system/user-redux" component={UserRedux} />
                             <Route path="/system/manage-doctor" component={ManageDoctor} />
+                            <Route path="/system/manage-specialty" component={ManageSpecialty} />
+
                             <Route path="/system/product-redux" component={ProductRedux} />
                             <Route path="/system/product-category" component={ProductCategory} />
                             <Route path="/system/product-type" component={ProductType} />

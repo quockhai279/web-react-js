@@ -33,6 +33,8 @@
             "manage-user": "Manage user",
             "manage-doctor": "Manage doctor",
             "manage-admin": "Manage admin",
+            "manage-specialty": "Manage specialty",
+            "specialty": "Specialty",
             "post": "Post",
             "manage-post": "Manage post",
             "crud": "CRUD user",

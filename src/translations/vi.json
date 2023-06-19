@@ -33,6 +33,8 @@
             "manage-user": "Người dùng",
             "manage-doctor": "Quản lý bác sĩ",
             "manage-admin": "Quản lý admin",
+            "manage-specialty": "Quản lý chuyên khoa",
+            "specialty": "Chuyên khoa",
             "post": "Bài đăng",
             "manage-post": "Quản lý bài đăng",
             "crud": "CRUD user",
