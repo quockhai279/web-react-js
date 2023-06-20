@@ -1,0 +1,83 @@
+.section-specialty-container {
+    width  : 100% !important;
+    height : 560px !important;
+    padding: 20px 50px;
+
+    .specialty-header {
+
+        .section-title {
+            position      : relative !important;
+            z-index       : 10;
+            min-width     : 50%;
+            display       : block;
+            font-weight   : 700;
+            color         : #1d1d1d;
+            line-height   : 100px;
+            text-transform: uppercase;
+            margin        : 0;
+        }
+    }
+
+    .slick-disabled {
+        display: none !important;
+    }
+
+    .specialty-body {
+        height: 300px !important;
+
+        .slick-list {
+            background: #fff;
+        }
+
+
+
+        .slick-slide {
+            padding-left : 10px;
+            padding-right: 10px;
+        }
+
+        .section-customize {
+            border-radius   : 10px;
+            height          : 380px;
+            border          : 1px solid #fff;
+            background-color: rgba(200, 199, 199, 0.333) !important;
+
+            .img {
+                z-index            : 1;
+                object-fit         : initial;
+                height             : 300px;
+                background-repeat  : no-repeat;
+                background-size    : auto;
+                background-position: center center;
+            }
+
+            .list-detail {
+                min-height: 60px;
+                padding   : 10px 20px;
+                text-align: left;
+
+                .title {
+                    font-size         : 17px;
+                    font-weight       : 700;
+                    text-decoration   : none;
+                    text-align        : left;
+                    line-height       : 1.3em;
+                    height            : 44px;
+                    margin-bottom     : 10px;
+                    color             : black;
+                    overflow          : hidden;
+                    display           : block;
+                    display           : -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    text-overflow     : ellipsis;
+                    white-space       : normal;
+                }
+
+                a:hover {
+                    color: #FED700 !important;
+                }
+            }
+        }
+    }
+}
