@@ -34,11 +34,11 @@ class Specialty extends Component {
         }
     }
 
-    // handleViewDetailDoctor = (doctor) => {
-    //     if (this.props.history) {
-    //         this.props.history.push(`/detail-doctor/${doctor.id}`)
-    //     }
-    // }
+    handleViewDetailSpecialty = (item) => {
+        if (this.props.history) {
+            this.props.history.push(`/detail-specialty/${item.id}`)
+        }
+    }
 
     render() {
         let { language } = this.props
@@ -53,7 +53,7 @@ class Specialty extends Component {
                         {dataSpecialty && dataSpecialty.length > 0
                             && dataSpecialty.map((item, index) => {
                                 return (
-                                    <div className='section-customize' key={index}>
+                                    <div className='section-customize' key={index} onClick={() => this.handleViewDetailSpecialty(item)}>
                                         <div className='img'
                                             style={{ backgroundImage: `url(${item.image})` }}
                                         ></div>

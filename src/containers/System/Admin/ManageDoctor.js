@@ -27,12 +27,21 @@ class ManageDoctor extends Component {
             listPrice: [],
             listPayment: [],
             listProvince: [],
+            listClinic: [],
+            listSpecialty: [],
+
             selectedPrice: '',
             selectedPayment: '',
             selectedProvince: '',
+            selectedClinic: '',
+            selectedSpecialty: '',
+
             nameClinic: '',
             addressClinic: '',
             note: '',
+            clinicId: '',
+            specialtyId: '',
+
         }
     }
 
@@ -55,16 +64,6 @@ class ManageDoctor extends Component {
                     result.push(object)
                 })
             }
-            if (type === 'PAYMENT' || type === 'PROVINCE') {
-                inputData.map((item, index) => {
-                    let object = {};
-                    let labelVi = `${item.valueVi} `
-                    let labelEn = `${item.valueEn} `
-                    object.label = language === LANGUAGES.VI ? labelVi : labelEn
-                    object.value = item.keyMap
-                    result.push(object)
-                })
-            }
             if (type === 'PRICE') {
                 inputData.map((item, index) => {
                     let object = {};
@@ -75,8 +74,26 @@ class ManageDoctor extends Component {
                     result.push(object)
                 })
             }
+            if (type === 'PAYMENT' || type === 'PROVINCE') {
+                inputData.map((item, index) => {
+                    let object = {};
+                    let labelVi = `${item.valueVi} `
+                    let labelEn = `${item.valueEn} `
+                    object.label = language === LANGUAGES.VI ? labelVi : labelEn
+                    object.value = item.keyMap
+                    result.push(object)
+                })
+            }
+            if (type === 'SPECIALTY') {
+                inputData.map((item, index) => {
+                    let object = {};
+                    object.label = item.name
+                    object.value = item.id
+                    result.push(object)
+                })
+            }
         }
-        console.log('result:', result);
+        // console.log('result:', result);
         return result
     }
 
@@ -88,16 +105,18 @@ class ManageDoctor extends Component {
             })
         }
         if (prevProps.allRequiredDoctorInfo !== this.props.allRequiredDoctorInfo) {
-            let { resPayment, resPrice, resProvince } = this.props.allRequiredDoctorInfo
+            let { resPayment, resPrice, resProvince, resSpecialty } = this.props.allRequiredDoctorInfo
             let dataSelectedPrice = this.buildDataInputSelect(resPrice, 'PRICE')
             let dataSelectedPayment = this.buildDataInputSelect(resPayment, 'PAYMENT')
             let dataSelectedProvince = this.buildDataInputSelect(resProvince, 'PROVINCE')
+            let dataSelectedSpecialty = this.buildDataInputSelect(resSpecialty, 'SPECIALTY')
             // console.log('allRequiredDoctorInfo props:', this.props.allRequiredDoctorInfo);
             // console.log('allRequiredDoctorInfo data:', dataSelectedPrice, dataSelectedPayment, dataSelectedProvince);
             this.setState({
                 listPrice: dataSelectedPrice,
                 listPayment: dataSelectedPayment,
                 listProvince: dataSelectedProvince,
+                listSpecialty: dataSelectedSpecialty,
             })
         }
         if (prevProps.language !== this.props.language) {
@@ -137,6 +156,8 @@ class ManageDoctor extends Component {
             nameClinic: this.state.nameClinic,
             addressClinic: this.state.addressClinic,
             note: this.state.note,
+            clinicId: this.state.selectedClinic && this.state.selectedClinic.value ? this.state.selectedClinic.value : '',
+            specialtyId: this.state.selectedSpecialty.value
         })
     }
 
@@ -216,7 +237,7 @@ class ManageDoctor extends Component {
     }
 
     render() {
-        let { hasOldData } = this.state
+        let { hasOldData, listSpecialty } = this.state
         // console.log('check render state::::::::::s', this.state);
         return (
             <div className='manage-doctor-container'>
@@ -293,12 +314,35 @@ class ManageDoctor extends Component {
                             value={this.state.note}
                         />
                     </div>
+                    <div className='col-3 form-group'>
+                        <label>Chọn chuyên khoa</label>
+                        <Select
+                            value={this.state.selectedSpecialty}
+                            onChange={this.handleOnChangeSelectDoctorInfo}
+                            options={this.state.listSpecialty}
+                            placeholder={<FormattedMessage id='admin.manage-doctor.specialty' />}
+                            name="selectedSpecialty"
+                        />
+                    </div>
+                    <div className='col-3 form-group'>
+                        <label>Chọn phòng khám</label>
+                        <Select
+                            value={this.state.selectedClinic}
+                            onChange={this.handleOnChangeSelectDoctorInfo}
+                            options={this.state.listClinic}
+                            placeholder={<FormattedMessage id='admin.manage-doctor.select-clinic' />}
+                            name="selectedClinic"
+                        />
+                    </div>
                 </div>
                 <button
                     onClick={() => this.handleSaveContentMarkdown()}
                     className={hasOldData === true ? 'save-content-doctor mb-3' : 'create-content-doctor mb-3'}>
                     {hasOldData === true ? <span><FormattedMessage id='admin.manage-doctor.save' /></span> : <span><FormattedMessage id='admin.manage-doctor.add' /></span>}
                 </button>
+                <div className='row'>
+
+                </div>
                 <div className='manage-doctor-editor'>
                     <MdEditor
                         style={{ height: '500px' }}
