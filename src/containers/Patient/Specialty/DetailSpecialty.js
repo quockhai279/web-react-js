@@ -7,16 +7,43 @@ import HomeHeader from '../../HomePage/HomeHeader';
 import DoctorSchedule from '../Doctor/DoctorSchedule';
 import DoctorExtraInfo from '../Doctor/DoctorExtraInfo';
 import ProfileDoctor from '../Doctor/ProfileDoctor';
+import { getAllDetailSpecialtyById, getAllCodeService } from '../../../services/userService';
+import _ from 'lodash';
+
+
 class DetailSpecialty extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            arrDoctorId: [4, 23, 5]
+            arrDoctorId: [],
+            dataDetailSpecialty: {},
+            listProvince: []
         }
     }
 
     async componentDidMount() {
-
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id
+            let res = await getAllDetailSpecialtyById({ id, location: 'ALL' })
+            let resProvince = await getAllCodeService('PROVINCE')
+            if (res && res.errCode === 0) {
+                let data = res.data
+                let arrDoctorId = []
+                if (data && !_.isEmpty(res.data)) {
+                    let arr = data.doctorSpecialty
+                    if (arr && arr.length > 0) {
+                        arr.map(item => {
+                            arrDoctorId.push(item.doctorId)
+                        })
+                    }
+                }
+                this.setState({
+                    dataDetailSpecialty: res.data,
+                    arrDoctorId,
+                    listProvince: resProvince.data
+                })
+            }
+        }
     }
 
     async componentDidUpdate(prevProps, preState, snapshot) {
@@ -25,14 +52,36 @@ class DetailSpecialty extends Component {
         }
     }
 
+    handleOnChangeSelect = (event) => {
+        console.log('check handleOnChangeSelect:::', event.target.value);
+    }
+
     render() {
-        let { arrDoctorId } = this.state
+        let { arrDoctorId, dataDetailSpecialty, listProvince } = this.state
+        console.log('check state::: ', this.state);
+        let { language } = this.props
         return (
             <>
                 <HomeHeader />
                 <div className='detail-specialty-container'>
                     <div className='description-detail-specialty'>
+                        {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty)
+                            &&
+                            <div dangerouslySetInnerHTML={{ __html: dataDetailSpecialty.descriptionHTML }}>
 
+                            </div>
+                        }
+                    </div>
+                    <div className='search-sp-doctor'>
+                        <select onChange={(event) => this.handleOnChangeSelect(event)}>
+                            {listProvince && listProvince.length > 0
+                                && listProvince.map((item, index) => {
+                                    return (
+                                        <option key={index} value={item.keyMap}>{language === LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
+                                    )
+                                })
+                            }
+                        </select>
                     </div>
                     {arrDoctorId && arrDoctorId.length > 0
                         && arrDoctorId.map((item, index) => {
