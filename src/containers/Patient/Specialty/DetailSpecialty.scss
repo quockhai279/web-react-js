@@ -1,43 +1,64 @@
 .detail-specialty-container {
-    margin: 0 50px;
 
-    .description-detail-specialty {
-        padding-top: 20px;
-    }
+    .detail-specialty-body {
+        padding         : 20px 50px;
+        background-color: #eee;
 
-    .search-sp-doctor {}
+        .description-detail-specialty {
+            background-color: white !important;
+            border-radius   : 5px;
+            padding         : 10px;
 
-    .each-doctor {
-        display         : flex;
-        width           : 100%;
-        min-height      : 300px;
-        margin          : 20px 0;
-        padding         : 10px;
-        background-color: #fff;
-        box-shadow      : 0 1px 6px #20212447;
-        border-radius   : 8px;
-
-        .detail-specialty-content-left {
-            width       : 50%;
-            border-right: 1px solid #ddd;
+            h1,
+            h2,
+            h3 {
+                font-size  : 16px;
+                font-weight: 6000;
+            }
         }
 
-        .detail-specialty-content-right {
-            width  : 50%;
-            padding: 10px;
+        .search-sp-doctor {
+            margin: 10px 0;
         }
 
-        // .doctor-schedule {
-        //     .doctor-schedule-container  
-        // }
+        .each-doctor {
+            display         : flex;
+            width           : 100%;
+            min-height      : 300px;
+            margin-bottom   : 20px;
+            padding         : 10px;
+            background-color: #fff;
+            box-shadow      : 0 1px 6px #20212447;
+            border-radius   : 8px;
 
-        .doctor-extra-info {
-            border-top : 1px solid #ddd;
-            margin-top : 10px;
-            padding-top: 10px;
+            .detail-specialty-content-left {
+                width       : 50%;
+                border-right: 1px solid #ddd;
 
-            .doctor-extraInfo-container {
-                padding-left: 0 !important
+                .profile-doctor {
+                    .down {
+                        padding: 0 5px;
+                    }
+                }
+            }
+
+            .detail-specialty-content-right {
+                width  : 50%;
+                padding: 10px;
+            }
+
+            // .doctor-schedule {
+            //     .doctor-schedule-container  
+            // }
+
+            .doctor-extra-info {
+                border-top : 1px solid #ddd;
+                margin-top : 10px;
+                padding-top: 10px;
+
+                .doctor-extraInfo-container {
+                    padding-left: 0 !important
+                }
             }
         }
     }

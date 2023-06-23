@@ -4,6 +4,7 @@ import './DetailSpecialty.scss'
 import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
 import HomeHeader from '../../HomePage/HomeHeader';
+import HomeFooter from '../../HomePage/Section/HomeFooter';
 import DoctorSchedule from '../Doctor/DoctorSchedule';
 import DoctorExtraInfo from '../Doctor/DoctorExtraInfo';
 import ProfileDoctor from '../Doctor/ProfileDoctor';
@@ -25,7 +26,48 @@ class DetailSpecialty extends Component {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id
             let res = await getAllDetailSpecialtyById({ id, location: 'ALL' })
-            let resProvince = await getAllCodeService('PROVINCE')
+            let resProvince = await getAllCodeService("PROVINCE")
+            if (res && res.errCode === 0 && resProvince && resProvince.errCode === 0) {
+                let data = res.data
+                let arrDoctorId = []
+                if (data && !_.isEmpty(res.data)) {
+                    let arr = data.doctorSpecialty
+                    if (arr && arr.length > 0) {
+                        arr.map(item => {
+                            arrDoctorId.push(item.doctorId)
+                        })
+                    }
+                }
+                let dataProvince = resProvince.data
+                if (dataProvince && dataProvince.length > 0) {
+                    dataProvince.unshift({
+                        createdAt: null,
+                        keyMap: "ALL",
+                        type: "PROVINCE",
+                        valueEn: "ALL",
+                        valueVi: "Toàn quốc",
+                    })
+                }
+                this.setState({
+                    dataDetailSpecialty: res.data,
+                    arrDoctorId,
+                    listProvince: dataProvince ? dataProvince : []
+                })
+            }
+        }
+    }
+
+    async componentDidUpdate(prevProps, preState, snapshot) {
+        if (this.props.doctorIdFromParent !== prevProps.doctorIdFromParent) {
+
+        }
+    }
+
+    handleOnChangeSelect = async (event) => {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id
+            let location = event.target.value
+            let res = await getAllDetailSpecialtyById({ id, location })
             if (res && res.errCode === 0) {
                 let data = res.data
                 let arrDoctorId = []
@@ -40,20 +82,9 @@ class DetailSpecialty extends Component {
                 this.setState({
                     dataDetailSpecialty: res.data,
                     arrDoctorId,
-                    listProvince: resProvince.data
                 })
             }
         }
-    }
-
-    async componentDidUpdate(prevProps, preState, snapshot) {
-        if (this.props.doctorIdFromParent !== prevProps.doctorIdFromParent) {
-
-        }
-    }
-
-    handleOnChangeSelect = (event) => {
-        console.log('check handleOnChangeSelect:::', event.target.value);
     }
 
     render() {
@@ -61,9 +92,9 @@ class DetailSpecialty extends Component {
         console.log('check state::: ', this.state);
         let { language } = this.props
         return (
-            <>
+            <div className='detail-specialty-container'>
                 <HomeHeader />
-                <div className='detail-specialty-container'>
+                <div className='detail-specialty-body'>
                     <div className='description-detail-specialty'>
                         {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty)
                             &&
@@ -88,12 +119,15 @@ class DetailSpecialty extends Component {
                             return (
                                 <div className='each-doctor' key={index}>
                                     <div className='detail-specialty-content-left'>
-                                        <div className='profile-doctor'></div>
-                                        <ProfileDoctor
-                                            isShowDescriptionDoctor={true}
-                                            doctorId={item}
-                                        // dataTime={dataTime}
-                                        />
+                                        <div className='profile-doctor'>
+                                            <ProfileDoctor
+                                                isShowDescriptionDoctor={true}
+                                                doctorId={item}
+                                                isShowLinkDetail={true}
+                                                isShowPrice={false}
+                                            // dataTime={dataTime}
+                                            />
+                                        </div>
                                     </div>
                                     <div className='detail-specialty-content-right'>
                                         <div className='doctor-schedule'>
@@ -112,7 +146,8 @@ class DetailSpecialty extends Component {
                         })
                     }
                 </div>
-            </>
+                <HomeFooter />
+            </div>
         );
     }
 }
