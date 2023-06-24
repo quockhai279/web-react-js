@@ -28,6 +28,14 @@ export const adminMenu = [
             },
         ]
     },
+    {// quản lý phòng khám
+        name: 'menu.admin.clinic',
+        menus: [
+            {
+                name: 'menu.admin.manage-clinic', link: '/system/manage-clinic'
+            },
+        ]
+    },
 
     ///////////////////////////
     {// quản lý sản phẩm
@@ -44,19 +52,19 @@ export const adminMenu = [
             },
         ]
     },
-    {// quản lý bài đăng
-        name: 'menu.admin.post',
-        menus: [
-            {
-                name: 'menu.admin.manage-post', link: '/system/manage-post'
-            },
-        ]
-    },
     {// quản lý đơn đặt hàng
         name: 'menu.admin.purchase-order',
         menus: [
             {
                 name: 'menu.admin.manage-order', link: '/system/manage-order'
+            },
+        ]
+    },
+    {// quản lý bài đăng
+        name: 'menu.admin.post',
+        menus: [
+            {
+                name: 'menu.admin.manage-post', link: '/system/manage-post'
             },
         ]
     },

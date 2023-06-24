@@ -43,7 +43,7 @@ class PromotionalProducts extends Component {
         return (
             <div className='productHot-container'>
                 <div className='product-header'>
-                    <h3 className='section-title'><a> - SẢN PHẨM NỔI BẬT</a></h3>
+                    <h3 className='section-title'><a> - Bác sĩ nổi bật tuần qua</a></h3>
                 </div>
                 <div className='productHot-content' >
                     <Slider {...this.props.settings}>

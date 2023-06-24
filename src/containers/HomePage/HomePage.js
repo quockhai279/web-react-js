@@ -9,6 +9,7 @@ import About from './Section/About'
 import HomeFooter from './Section/HomeFooter'
 
 import Specialty from './Section/Specialty';
+import MedicalFacility from './Section/MedicalFacility';
 
 import './HomePage.scss'
 import "slick-carousel/slick/slick.css";
@@ -95,6 +96,7 @@ class HomePage extends Component {
                 <ProductHot settings={settings} />
                 <PromotionalProducts settings={settings} />
                 <Specialty settings={Settings} />
+                <MedicalFacility settings={Settings} />
                 <HandBook />
                 <About />
                 <HomeFooter />
