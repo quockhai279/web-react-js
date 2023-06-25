@@ -63,6 +63,7 @@ class App extends Component {
                                     <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
                                     <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
                                     <Route path={path.DETAIL_CLINIC} component={DetailClinic} />
+
                                     <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail} />
 
 
